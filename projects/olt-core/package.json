@@ -1,0 +1,15 @@
+{
+  "name": "@olt/core",
+  "version": "12.2.9",
+  "peerDependencies": {
+    "@angular/common": "^12.2.13",
+    "@angular/core": "^12.2.13",
+    "@angular/forms": "^12.2.13",
+    "@angular/platform-browser": "^12.1.13",
+    "@angular/router": "^12.2.13",
+    "dayjs": "^1.10.5"
+  },
+  "dependencies": {
+    "tslib": "^2.2.0"
+  }
+}

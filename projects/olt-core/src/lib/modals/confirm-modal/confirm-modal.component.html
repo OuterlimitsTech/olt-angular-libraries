@@ -1,0 +1,10 @@
+<div class="modal-header" [ngClass]="headerCss">
+  <h4 class="modal-title pull-left text-uppercase m-0 p-0">{{ settings?.title }}</h4>
+</div>
+<div class="modal-body">
+  <h5>{{ settings?.message }} </h5>
+</div>
+<div class="modal-footer">
+  <button type="button" [ngClass]="closeButtonCss" (click)="bsModalRef.hide()">{{ settings?.buttons?.cancel }}</button>
+  <button type="button" [ngClass]="primaryButtonCss" (click)="confirm()">{{ settings?.buttons?.primary }}</button>
+</div>

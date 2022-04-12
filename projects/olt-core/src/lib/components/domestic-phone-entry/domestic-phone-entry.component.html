@@ -1,0 +1,17 @@
+<div class="row" [formGroup]="formGroup">
+
+  <div class="col-12 col-lg-6 col-xl-8">
+    <olt-form-group>
+      <span class="control-label">{{label}}</span>
+      <input type="tel" class="form-control" maxlength="20" oltPhoneMask formControlName="number" />
+    </olt-form-group>
+  </div>
+
+  <div class="col-12 col-lg-6 col-xl-4" *ngIf="extVisible">
+    <olt-form-group>
+      <span class="control-label">Ext.</span>
+      <input type="text" class="form-control" maxlength="10" oltIntEntry formControlName="ext" />
+    </olt-form-group>
+  </div>
+
+</div>

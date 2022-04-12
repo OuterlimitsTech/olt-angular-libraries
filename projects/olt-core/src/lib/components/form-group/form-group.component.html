@@ -1,0 +1,25 @@
+<div class="form-group" [class.invalid]="showErrorIndicator" [class.success]="showSuccessIndicator"
+  [class.focused]="isFocused">
+  <label [for]="controlId" [class.sr-only]="srOnly === true" #label>
+    <ng-content select=".control-label">
+    </ng-content>
+    <span *ngIf="showRequiredIndicator" class="required" role="presentation">
+      <i class="fas fa-asterisk"></i>
+    </span>
+    <span *ngIf="showErrorIndicator" class="required" role="presentation">
+      <i class="fas fa-times-circle"></i>
+    </span>
+    <span *ngIf="showSuccessIndicator" class="valid" role="presentation">
+      <i class="fa fa-check-circle"></i>
+    </span>
+  </label>
+
+  <span #control>
+    <ng-content>
+    </ng-content>
+  </span>
+
+  <div class="help-block" *ngIf="showErrorIndicator">
+    <span class="badge badge-firebrick"> {{ getFirstError() }}</span>
+  </div>
+</div>

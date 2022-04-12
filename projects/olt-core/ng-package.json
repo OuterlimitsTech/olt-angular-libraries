@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/olt-core",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "ngx-bootstrap/modal": "ngx-bootstrap/modal",
+      "ngx-bootstrap/pagination": "ngx-bootstrap/pagination",
+      "ngx-bootstrap/timepicker": "ngx-bootstrap/timepicker",
+      "ngx-bootstrap/datepicker": "ngx-bootstrap/datepicker",
+      "ngx-logger": "ngx-logger",
+      "error-stack-parser": "error-stack-parser",
+      "ngx-toastr": "ngx-toastr"
+    }
+  }
+}
