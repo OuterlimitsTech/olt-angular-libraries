@@ -16,38 +16,35 @@ import { EXPORT_DIRECTIVES, IMPORT_DIRECTIVES } from './directives/exports';
 
 
 @NgModule({
-  declarations: [
-    IMPORT_COMPONENTS,
-    IMPORT_DIRECTIVES,
-    IMPORT_MODAL_COMPONENTS,
-    IMPORT_PIPES,
-    IMPORT_VIEW_COMPONENTS
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ModalModule.forRoot(),
-    PaginationModule.forRoot(),
-    TimepickerModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    ToastrModule.forRoot({
-      preventDuplicates: true,
-      positionClass: 'toast-top-full-width',
-      progressBar: true,
-      progressAnimation: 'increasing',
-    }),
-  ],
-  exports: [
-    ToastrModule,
-    EXPORT_COMPONENTS,
-    EXPORT_DIRECTIVES,
-    EXPORT_MODAL_COMPONENTS,
-    EXPORT_PIPES,
-    EXPORT_VIEW_COMPONENTS
-  ],
-  entryComponents: [
-    ENTRY_MODAL_COMPONENTS
-  ]
+    declarations: [
+        IMPORT_COMPONENTS,
+        IMPORT_DIRECTIVES,
+        IMPORT_MODAL_COMPONENTS,
+        IMPORT_PIPES,
+        IMPORT_VIEW_COMPONENTS
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ModalModule.forRoot(),
+        PaginationModule.forRoot(),
+        TimepickerModule.forRoot(),
+        BsDatepickerModule.forRoot(),
+        ToastrModule.forRoot({
+            preventDuplicates: true,
+            positionClass: 'toast-top-full-width',
+            progressBar: true,
+            progressAnimation: 'increasing',
+        }),
+    ],
+    exports: [
+        ToastrModule,
+        EXPORT_COMPONENTS,
+        EXPORT_DIRECTIVES,
+        EXPORT_MODAL_COMPONENTS,
+        EXPORT_PIPES,
+        EXPORT_VIEW_COMPONENTS
+    ]
 })
 export class OltCoreModule { }

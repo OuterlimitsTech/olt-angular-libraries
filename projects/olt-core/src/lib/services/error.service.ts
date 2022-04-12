@@ -47,8 +47,7 @@ export class OltErrorService {
 
     if (this.authService.isAuthenticated && this.authService.token != null) {
       const tokenType = this.authService.tokenType || 'Bearer';
-      //config.customHttpHeaders = new HttpHeaders({ Authorization: `${this.authService.tokenType} ${this.authService.token}` });
-      this.logger.setCustomHttpHeaders(new HttpHeaders({ Authorization: `${this.authService.tokenType} ${this.authService.token}` }));
+      config.customHttpHeaders = new HttpHeaders({ Authorization: `${tokenType} ${this.authService.token}` });
     }
     this.logger.updateConfig(config);
 
