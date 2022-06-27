@@ -23,8 +23,10 @@ export abstract class OltBaseViewComponent implements OnDestroy {
     });
   }
 
-  protected set unsub(sub$: Subscription) {
-    this.destroy$.push(sub$);
+  protected set unsub(sub$: Subscription | undefined) {
+    if (sub$ != undefined) {
+      this.destroy$.push(sub$);
+    }
   }
 
 
