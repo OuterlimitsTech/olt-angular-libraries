@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ControlContainer, FormGroup, FormGroupDirective, FormGroupName } from '@angular/forms';
+import { ControlContainer, UntypedFormGroup, FormGroupDirective, FormGroupName } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -18,13 +18,13 @@ export abstract class OltBaseFormGroupComponent implements OnDestroy {
     });
   }
 
-  get formGroup(): FormGroup {
+  get formGroup(): UntypedFormGroup {
     if (this.controlContainer instanceof FormGroupName) {
       return (this.controlContainer as FormGroupName).control;
     }
 
-    if (this.controlContainer instanceof FormGroup) {
-      return this.controlContainer as FormGroup;
+    if (this.controlContainer instanceof UntypedFormGroup) {
+      return this.controlContainer as UntypedFormGroup;
     }
 
     if (this.controlContainer instanceof FormGroupDirective) {

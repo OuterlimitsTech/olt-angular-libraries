@@ -35,7 +35,6 @@
       }
     }
   },
-  "defaultProject": "olt-core",
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"

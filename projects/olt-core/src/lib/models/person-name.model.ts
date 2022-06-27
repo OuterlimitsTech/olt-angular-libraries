@@ -1,4 +1,4 @@
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 
 export class PersonName {
   prefix?: string;
@@ -7,7 +7,7 @@ export class PersonName {
   last?: string;
   suffix?: string;
 
-  public static formGroup(fb: FormBuilder, required?: boolean): FormGroup {
+  public static formGroup(fb: UntypedFormBuilder, required?: boolean): UntypedFormGroup {
     const validators = required === true ? [Validators.required] : [];
     return fb.group({
       first: [null, validators],

@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -11,7 +11,7 @@ import { OltUtility } from '../../utilities';
   styleUrls: ['./input-modal.component.scss']
 })
 export class InputModalComponent extends BaseModalComponent implements OnInit {
-  entryForm: FormGroup = this.createForm();
+  entryForm: UntypedFormGroup = this.createForm();
   settings!: InputModal;
   response = new InputModalResponse();
   dateValue!: Date;
@@ -19,12 +19,12 @@ export class InputModalComponent extends BaseModalComponent implements OnInit {
 
   constructor(
     public bsModalRef: BsModalRef,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) { super(); }
 
   ngOnInit(): void { }
 
-  public createForm(): FormGroup {
+  public createForm(): UntypedFormGroup {
     return this.fb.group({
       value: [this.settings?.value, [Validators.required]]
     });
