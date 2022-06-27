@@ -1,6 +1,6 @@
 {
   "name": "olt-core",
-  "version": "13.0.0",
+  "version": "14.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,26 +10,26 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^13.3.2",
-    "@angular/common": "^13.3.2",
-    "@angular/compiler": "^13.3.2",
-    "@angular/core": "^13.3.2",
-    "@angular/forms": "^13.3.2",
-    "@angular/platform-browser": "^13.3.2",
-    "@angular/platform-browser-dynamic": "^13.3.2",
-    "@angular/router": "^13.3.2",
+    "@angular/animations": "^14.0.3",
+    "@angular/common": "^14.0.3",
+    "@angular/compiler": "^14.0.3",
+    "@angular/core": "^14.0.3",
+    "@angular/forms": "^14.0.3",
+    "@angular/platform-browser": "^14.0.3",
+    "@angular/platform-browser-dynamic": "^14.0.3",
+    "@angular/router": "^14.0.3",
     "error-stack-parser": "2.0.6",
     "ngx-bootstrap": "^8.0.0",
-    "ngx-logger": "^5.0.9",
-    "ngx-toastr": "^14.2.4",
+    "ngx-logger": "^5.0.11",
+    "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^13.3.2",
-    "@angular/cli": "~13.3.2",
-    "@angular/compiler-cli": "~13.3.2",
+    "@angular-devkit/build-angular": "^14.0.3",
+    "@angular/cli": "^14.0.3",
+    "@angular/compiler-cli": "^14.0.3",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.7.0",
@@ -38,7 +38,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "ng-packagr": "^13.3.1",
+    "ng-packagr": "^14.0.2",
     "typescript": "~4.6.3"
   }
 }

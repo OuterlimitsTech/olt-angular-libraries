@@ -1,6 +1,6 @@
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 export interface IOltDynamicFormComponent {
   storageKey: any;
-  entryForm: FormGroup;
+  entryForm: UntypedFormGroup;
 }

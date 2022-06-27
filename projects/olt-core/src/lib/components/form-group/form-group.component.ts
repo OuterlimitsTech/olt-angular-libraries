@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Input, ViewChild, AfterViewInit, AfterContentChecked } from '@angular/core';
-import { FormGroup, FormGroupName, ControlContainer, AbstractControl, FormGroupDirective } from '@angular/forms';
+import { UntypedFormGroup, FormGroupName, ControlContainer, AbstractControl, FormGroupDirective } from '@angular/forms';
 
 const guid = () => {
   function s4() {
@@ -122,13 +122,13 @@ export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentCh
     return controlName;
   }
 
-  get formGroup(): FormGroup | AbstractControl | null {
+  get formGroup(): UntypedFormGroup | AbstractControl | null {
     if (this.controlContainer instanceof FormGroupName) {
       return (this.controlContainer as FormGroupName).control;
     }
 
-    if (this.controlContainer instanceof FormGroup) {
-      return this.controlContainer as FormGroup;
+    if (this.controlContainer instanceof UntypedFormGroup) {
+      return this.controlContainer as UntypedFormGroup;
     }
 
     if (this.controlContainer instanceof FormGroupDirective) {
