@@ -1,14 +1,14 @@
-import { ModalResult } from './../models/modal-result.model';
-import { IModalComponent } from './../interfaces/modal-component.interface';
 import { Injectable, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BsModalService, ModalOptions, BsModalRef } from 'ngx-bootstrap/modal';
 import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
 import { IConfirmModal, IAlertModal, IInputModal } from '../interfaces';
 import { AlertModalComponent } from '../modals/alert-modal/alert-modal.component';
-import { ConfirmModal, AlertModal, InputModalResponse, InputModal } from './../models';
+import { InputModalResponse } from './../models';
 import { InputModalComponent } from '../modals/input-modal/input-modal.component';
 import { ModalSizeEnum } from '../enums/modal-size.enum';
+import { ModalResult } from './../models/modal-result.model';
+import { IModalComponent } from './../interfaces/modal-component.interface';
 
 @Injectable()
 export class OltModalService {

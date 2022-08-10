@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, ElementRef, Output, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, EventEmitter, ElementRef, Output, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { timer } from 'rxjs';
 import { IPaged } from '../../interfaces/paged.interface';
 import { IPagerChangeEvent } from '../../interfaces/pager-change-event.interface';

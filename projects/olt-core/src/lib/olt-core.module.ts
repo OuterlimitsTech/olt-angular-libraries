@@ -10,7 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { IMPORT_VIEW_COMPONENTS, EXPORT_VIEW_COMPONENTS } from './views/exports';
 import { IMPORT_COMPONENTS, EXPORT_COMPONENTS } from './components/exports';
-import { IMPORT_MODAL_COMPONENTS, EXPORT_MODAL_COMPONENTS, ENTRY_MODAL_COMPONENTS } from './modals/exports';
+import { IMPORT_MODAL_COMPONENTS, EXPORT_MODAL_COMPONENTS } from './modals/exports';
 import { EXPORT_PIPES, IMPORT_PIPES } from './pipes/exports';
 import { EXPORT_DIRECTIVES, IMPORT_DIRECTIVES } from './directives/exports';
 
