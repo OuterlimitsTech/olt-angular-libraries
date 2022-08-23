@@ -1,6 +1,5 @@
 import { Directive, forwardRef, HostListener, ElementRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IOltCursorPositionFormatted } from '../interfaces/cursor-position-formatted.interface';
 import { OltUtility } from '../utilities/utility';
 
 
@@ -58,7 +57,7 @@ export class ZipcodeMaskDirective {
       input.setSelectionRange(formatted.cursorPosition, formatted.cursorPosition);
     }
     this.oldValue = newValue;
-    this.emitValue(newValue);
+    this.emitValue(this.oldValue);
   }
 
   emitValue(v: string | null): void {
@@ -95,6 +94,7 @@ export class ZipcodeMaskDirective {
   }
 
   registerOnTouched(fn: any): void {
+    if (this.onTouchedCallback != null) { }  //prevent tsconfig compile error for unused variable
     this.onTouchedCallback = fn;
   }
 

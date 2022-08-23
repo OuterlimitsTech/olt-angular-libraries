@@ -40,7 +40,7 @@ export class IntEntryDirective {
       input.value = intOnly;
     }
     this.oldValue = intOnly;
-    this.emitValue(intOnly);
+    this.emitValue(this.oldValue);
   }
 
   emitValue(value: string | null): void {
@@ -70,6 +70,7 @@ export class IntEntryDirective {
   }
 
   registerOnTouched(fn: any): void {
+    if (this.onTouchedCallback != null) { }  //prevent tsconfig compile error for unused variable
     this.onTouchedCallback = fn;
   }
 

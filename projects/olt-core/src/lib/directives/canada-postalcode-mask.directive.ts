@@ -55,7 +55,7 @@ export class CanadaPostalcodeMaskDirective {
       input.setSelectionRange(formatted.cursorPosition, formatted.cursorPosition);
     }
     this.oldValue = newValue;
-    this.emitValue(newValue);
+    this.emitValue(this.oldValue);
   }
 
   emitValue(v: string | null): void {
@@ -92,6 +92,7 @@ export class CanadaPostalcodeMaskDirective {
   }
 
   registerOnTouched(fn: any): void {
+    if (this.onTouchedCallback != null) { }  //prevent tsconfig compile error for unused variable
     this.onTouchedCallback = fn;
   }
 

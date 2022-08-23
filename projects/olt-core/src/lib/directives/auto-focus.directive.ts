@@ -16,7 +16,7 @@ export class AutoFocusDirective implements OnInit {
     this.autoFocus = OltUtility.toBoolean(value, false) === true;
   }
 
-  constructor(private elRef: ElementRef, @Inject(DOCUMENT) private document: any) {
+  constructor(elRef: ElementRef, @Inject(DOCUMENT) document: any) {
     const doc = document as Document;
     this.host = elRef.nativeElement;
     this.focused = doc.activeElement;

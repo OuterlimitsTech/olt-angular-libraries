@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiParams } from '../models/api-params.model';
 import { IApiParam } from '../interfaces/api-param.interface';
-import { ApiParameter } from '../models/api-parameter.model';
 import { filter, switchMap } from 'rxjs/operators';
 
 export const httpOptions = {

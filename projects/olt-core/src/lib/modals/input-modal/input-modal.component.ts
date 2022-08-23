@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { InputModal, InputModalResponse } from '../../models';
-import { ModalInputTypeEnum } from '../../enums';
-import { OltUtility } from '../../utilities';
 
 @Component({
   templateUrl: './input-modal.component.html',

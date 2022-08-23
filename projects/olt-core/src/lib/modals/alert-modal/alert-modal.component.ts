@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { ModalTypeEnum } from '../../enums';
 import { AlertModal } from '../../models';
 import { BaseModalComponent } from '../base-modal.component';
 
