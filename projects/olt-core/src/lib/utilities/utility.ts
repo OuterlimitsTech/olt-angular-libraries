@@ -1,5 +1,7 @@
+import { AbstractControl, UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { IOltCursorPositionFormatted } from '../interfaces/cursor-position-formatted.interface';
 import { Func } from '../interfaces/deletgates.interface';
+import { FormControlError } from '../models/form-control-error.model';
 declare let dayjs: any;
 
 
@@ -171,29 +173,6 @@ export class OltUtility {
         return JSON.parse('{"' + decodeURI(queryString.replace(/&/g, '","').replace(/=/g, '":"')) + '"}');
     }
 
-
-    // public static setTouched(form: FormGroup | FormArray): void {
-    //     Object.keys(form.controls).map((controlName: string) => {
-    //         const control = form.get(controlName);
-    //         if (control instanceof FormGroup) {
-    //             this.setTouched(control);
-    //         }
-    //         if (control instanceof FormArray) {
-    //             const formArray = control as FormArray;
-    //             this.setTouched(formArray);
-    //         }
-    //         if (form.get(controlName)?.valid) {
-    //             // if (form.get(controlName).value) {
-    //             //     form.get(controlName).markAsTouched({ onlySelf: true });
-    //             // }
-    //         } else {
-    //             form.get(controlName)?.markAsTouched({ onlySelf: true });
-    //         }
-    //     });
-    // }
-
-
-
     public static cursorPositionFormatMask(value: string | null, formatMasks: string[], cleanString: Func<string | null, string | null | undefined>): IOltCursorPositionFormatted | null {
         let lastCharIndex = 0;
         const cleanValue = cleanString(value);
@@ -239,5 +218,77 @@ export class OltUtility {
             cursorPosition: position
         };
     }
+
+    public static getFormValidationErrors(form: UntypedFormGroup | AbstractControl | null, validationLabel?: string | null): FormControlError[] {
+        const result = new Array<FormControlError>();
+
+        if (form == null) {
+            return result;
+        }
+
+        if (form instanceof UntypedFormGroup) {
+            const key = this.getControlName(form) || 'unknown';
+            const controlErrors = form?.errors;
+            if (controlErrors != null && controlErrors != undefined) {
+                Object.keys(controlErrors).forEach(keyError => {
+                    result.push(new FormControlError(key, form, keyError, controlErrors[keyError], validationLabel));
+                });
+            }
+
+            Object.keys(form.controls).forEach(key => {
+                const controlErrors = form.get(key)?.errors;
+                if (controlErrors != null && controlErrors != undefined) {
+                    Object.keys(controlErrors).forEach(keyError => {
+                        result.push(new FormControlError(key, form.get(key), keyError, controlErrors[keyError], validationLabel));
+                    });
+                }
+            });
+        }
+
+        if (form instanceof UntypedFormControl) {
+            const controlErrors = form?.errors;
+            if (controlErrors != null && controlErrors != undefined) {
+                Object.keys(controlErrors).forEach(keyError => {
+                    result.push(new FormControlError(this.getControlName(form) || 'unknown', form, keyError, controlErrors[keyError], validationLabel));
+                });
+            }
+        }
+
+
+        return result;
+    }
+
+    public static getControlName(control: UntypedFormGroup | AbstractControl): string | null {
+        if (control.parent instanceof UntypedFormGroup) {
+            const group = control.parent as UntypedFormGroup;
+            let name!: string;
+            Object.keys(group.controls).forEach(key => {
+                let childControl = group.get(key);
+                if (childControl !== control) {
+                    return;
+                }
+                name = key;
+            });
+            return name != undefined ? name : null;
+        }
+        return null;
+    }
+
+    public static triggerValidators(form: UntypedFormGroup | UntypedFormArray): void {
+        Object.keys(form.controls).map((controlName) => {
+            const control = form.get(controlName);
+            if (control instanceof UntypedFormGroup) {
+                this.triggerValidators(control);
+            }
+            if (control instanceof UntypedFormArray) {
+                const formArray = control as UntypedFormArray;
+                this.triggerValidators(formArray);
+            }
+            if (form.get(controlName)?.invalid) {
+                form.get(controlName)?.markAsTouched({ onlySelf: true });
+            }
+        });
+    }
+
 
 }

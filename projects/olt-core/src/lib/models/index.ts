@@ -4,6 +4,7 @@ export * from './authenticated-user-token.model';
 export * from './broadcast-message.model';
 export * from './domestic-phone.model';
 export * from './dynamic-angular-template';
+export * from './form-control-error.model';
 export * from './modal-action-buttons.model';
 export * from './modal-alert-button.model';
 export * from './modal-alert.model';
