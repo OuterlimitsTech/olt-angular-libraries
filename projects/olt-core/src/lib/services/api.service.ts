@@ -113,7 +113,7 @@ export class OltApiService {
   }
 
   toFileFormData(files?: File[] | FileList, filesFormName = 'files', formData?: FormData | null): FormData {
-    formData = formData || new FormData();
+    formData = formData ?? new FormData();
     if (files == null) {
       return formData;
     }
