@@ -1,0 +1,25 @@
+<ng-container [formGroup]="formGroup">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <olt-form-group>
+        <span class="control-label">Date</span>
+        <div class="input-group">
+          <input type="text" class="form-control" #datePicker="bsDatepicker" bsDatepicker placeholder="mm/dd/yyyy"
+            aria-label="date" aria-describedby="date" formControlName="date" [minDate]="min" [maxDate]="max">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="datePicker.toggle()">
+              <i class="fa fa-calendar"></i>
+            </button>
+          </div>
+        </div>
+      </olt-form-group>
+    </div>
+    <div class="col-12 col-lg-6">
+      <olt-form-group>
+        <span class="control-label">Time</span>
+        <timepicker formControlName="time">
+        </timepicker>
+      </olt-form-group>
+    </div>
+  </div>
+</ng-container>

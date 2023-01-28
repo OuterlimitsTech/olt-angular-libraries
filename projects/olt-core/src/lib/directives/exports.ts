@@ -6,9 +6,9 @@ import { ZipcodeMaskDirective } from './zipcode-mask.directive';
 import { AutoFocusDirective } from './auto-focus.directive';
 import { PhoneMaskDirective } from './phone-mask.directive';
 import { CanadaPostalcodeMaskDirective } from './canada-postalcode-mask.directive';
-import { OltDynamicComponentHostDirective } from './dynamic-component-host.directive';
+import { DynamicComponentHostDirective } from './dynamic-component-host.directive';
 import { DateLessThanDirective } from './date-less-than.directive';
-
+import { FormGroupStyleDirective } from './form-group-style.directive';
 
 export const IMPORT_DIRECTIVES = [
   FileDragDropDirective,
@@ -19,9 +19,11 @@ export const IMPORT_DIRECTIVES = [
   ZipcodeMaskDirective,
   DecimalEntryDirective,
   AutoFocusDirective,
-  OltDynamicComponentHostDirective,
-  DateLessThanDirective
+  DynamicComponentHostDirective,
+  DateLessThanDirective,
+  FormGroupStyleDirective
 ];
+
 
 export const EXPORT_DIRECTIVES = [
   AutoFocusDirective,
@@ -32,6 +34,7 @@ export const EXPORT_DIRECTIVES = [
   CanadaPostalcodeMaskDirective,
   ZipcodeMaskDirective,
   DecimalEntryDirective,
-  OltDynamicComponentHostDirective,
-  DateLessThanDirective
+  DynamicComponentHostDirective,
+  DateLessThanDirective,
+  FormGroupStyleDirective
 ];

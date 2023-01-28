@@ -173,6 +173,29 @@ export class OltUtility {
         return JSON.parse('{"' + decodeURI(queryString.replace(/&/g, '","').replace(/=/g, '":"')) + '"}');
     }
 
+
+    public static setTouched(form: UntypedFormGroup | UntypedFormArray): void {
+        Object.keys(form.controls).map((controlName: string) => {
+            const control = form.get(controlName);
+            if (control instanceof UntypedFormGroup) {
+                this.setTouched(control);
+            }
+            if (control instanceof UntypedFormArray) {
+                const formArray = control as UntypedFormArray;
+                this.setTouched(formArray);
+            }
+            if (form.get(controlName)?.valid) {
+                // if (form.get(controlName).value) {
+                //     form.get(controlName).markAsTouched({ onlySelf: true });
+                // }
+            } else {
+                form.get(controlName)?.markAsTouched({ onlySelf: true });
+            }
+        });
+    }
+
+
+
     public static cursorPositionFormatMask(value: string | null, formatMasks: string[], cleanString: Func<string | null, string | null | undefined>): IOltCursorPositionFormatted | null {
         let lastCharIndex = 0;
         const cleanValue = cleanString(value);
@@ -290,5 +313,46 @@ export class OltUtility {
         });
     }
 
+    /**
+    * 
+    * @remarks
+    * This method accepts two date values, one for the date, one for the time, then combines them into a new date
+    * If time is supplied in a string format, it must also include the date portion
+    * 
+    * @param date - date or string representation of date
+    * @param time - if not null: date or string representation of date including time portion
+    * @returns - date value or null
+    */
+    public static combineDateAndTime(date: Date | string | null, time: Date | string | null): Date | null {
+        let paramDateValue: Date;
+        let paramTimeValue: Date | null = null;
+
+        if (date == null) {
+            return null;
+        }
+
+        // if string convert to date object else use param value
+        paramDateValue = typeof date === 'string' ? paramDateValue = new Date(date) : date;
+
+        if (time != null && time != undefined) {
+            // if string convert to date object else use param value
+            paramTimeValue = typeof time === 'string' ? paramTimeValue = new Date(time) : time;
+        } else {
+            paramTimeValue = null;
+        }
+
+        if (!(paramDateValue instanceof Date && !isNaN(paramDateValue as any))) {
+            return null;
+        }
+
+        if (paramTimeValue instanceof Date && !isNaN(paramTimeValue as any)) {
+            return new Date(
+                paramDateValue.getFullYear(), paramDateValue.getMonth(), paramDateValue.getDate(),
+                paramTimeValue!.getHours(), paramTimeValue!.getMinutes(), paramTimeValue!.getSeconds()
+            );
+        } else {
+            return new Date(paramDateValue.getFullYear(), paramDateValue.getMonth(), paramDateValue.getDate());
+        }
+    }
 
 }

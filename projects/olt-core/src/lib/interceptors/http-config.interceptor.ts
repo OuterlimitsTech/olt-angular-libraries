@@ -1,8 +1,8 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { OltAuthServiceBase } from '../services';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { OltConfigServiceBase } from '../services/config.service';
 
 
@@ -39,24 +39,24 @@ export abstract class OltHttpConfigInterceptor implements HttpInterceptor {
 
 
     return next.handle(request).pipe(
-      map((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
-          // console.log('event--->>>', event);
-          // this.errorDialogService.openDialog(event);
-        }
-        return event;
-      }),
+      // map((event: HttpEvent<any>) => {
+      //   if (event instanceof HttpResponse) {
+      //     // console.log('event--->>>', event);
+      //     // this.errorDialogService.openDialog(event);
+      //   }
+      //   return event;
+      // }),
 
       catchError((error: HttpErrorResponse) => {
-        if (error.status === HttpStatusCode.BadRequest && error.error && error.error.validationErrors && error.error.validationErrors.length > 0) {
-          // this._modalService.showValidationModal(err.error.validationErrors);
-          return throwError(error);
-        }
+        // if (error.status === HttpStatusCode.BadRequest && error.error && error.error.validationErrors && error.error.validationErrors.length > 0) {
+        //   // this._modalService.showValidationModal(err.error.validationErrors);
+        //   return throwError(error);
+        // }
 
         if (error.status === HttpStatusCode.Unauthorized) {
           if (this.configService.isProduction !== true) {
             console.error('Auth Error', error);
-            return throwError(error);
+            return throwError(() => error);
           }
 
           if (this.authService.isAuthenticated) {
@@ -65,7 +65,7 @@ export abstract class OltHttpConfigInterceptor implements HttpInterceptor {
             this.router.navigateByUrl(this.configService.accessDeniedRoute);
           }
         }
-        return throwError(error);
+        return throwError(() => error);
       })
     );
 

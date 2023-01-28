@@ -1,5 +1,5 @@
 import { Injectable, TemplateRef } from '@angular/core';
-import { Observable } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { BsModalService, ModalOptions, BsModalRef } from 'ngx-bootstrap/modal';
 import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
 import { IConfirmModal, IAlertModal, IInputModal } from '../interfaces';
@@ -9,6 +9,7 @@ import { InputModalComponent } from '../modals/input-modal/input-modal.component
 import { ModalSizeEnum } from '../enums/modal-size.enum';
 import { ModalResult } from './../models/modal-result.model';
 import { IModalComponent } from './../interfaces/modal-component.interface';
+import { OltUtility } from '../utilities/utility';
 
 @Injectable()
 export class OltModalService {
@@ -27,17 +28,19 @@ export class OltModalService {
     return this.modalService.show(template, config);
   }
 
-  showFromComponent(component: any | Partial<IModalComponent>, initialState: any, size?: ModalSizeEnum | string): Observable<ModalResult> {
+  showFromComponent(component: any | Partial<IModalComponent>, initialState?: any, size?: ModalSizeEnum | string): Observable<ModalResult> {
     let modalRef: BsModalRef;
     const config = this.defaultOptions;
     config.class = size || ModalSizeEnum.Large;
-    config.initialState = initialState;
+    config.initialState = initialState ?? {};
     return new Observable(observer => {
       modalRef = this.modalService.show(component, config);
-      this.modalService.onHide.subscribe((event: any) => {
-        observer.next(modalRef.content.modalResult);
-        observer.complete();
-      });
+      this.modalService.onHide
+        .pipe(filter(event => OltUtility.toInt(event.id, -1) === OltUtility.toInt(modalRef.id, -2)))
+        .subscribe((event: any) => {
+          observer.next(modalRef.content.modalResult);
+          observer.complete();
+        });
 
     });
   }
@@ -66,10 +69,12 @@ export class OltModalService {
     return new Observable(observer => {
       modalRef = this.modalService.show(ConfirmModalComponent, copyConfig);
       modalRef.content.settings = settings;
-      this.modalService.onHide.subscribe((event: any) => {
-        observer.next(modalRef.content.result === true);
-        observer.complete();
-      });
+      this.modalService.onHide
+        .pipe(filter(event => OltUtility.toInt(event.id, -1) === OltUtility.toInt(modalRef.id, -2)))
+        .subscribe((event: any) => {
+          observer.next(modalRef.content.result === true);
+          observer.complete();
+        });
     });
   }
 
@@ -98,10 +103,12 @@ export class OltModalService {
     return new Observable(observer => {
       modalRef = this.modalService.show(AlertModalComponent, copyConfig);
       modalRef.content.settings = settings;
-      this.modalService.onHide.subscribe((event: any) => {
-        observer.next();
-        observer.complete();
-      });
+      this.modalService.onHide
+        .pipe(filter(event => OltUtility.toInt(event.id, -1) === OltUtility.toInt(modalRef.id, -2)))
+        .subscribe((event: any) => {
+          observer.next();
+          observer.complete();
+        });
     });
   }
 
@@ -132,10 +139,12 @@ export class OltModalService {
     return new Observable(observer => {
       modalRef = this.modalService.show(InputModalComponent, copyConfig);
       modalRef.content.settings = settings;
-      this.modalService.onHide.subscribe((event: any) => {
-        observer.next(modalRef.content.response as InputModalResponse);
-        observer.complete();
-      });
+      this.modalService.onHide
+        .pipe(filter(event => OltUtility.toInt(event.id, -1) === OltUtility.toInt(modalRef.id, -2)))
+        .subscribe((event: any) => {
+          observer.next(modalRef.content.response as InputModalResponse);
+          observer.complete();
+        });
     });
   }
 

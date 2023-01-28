@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormGroupComponent } from './form-group.component';
+import { HelpBlockComponent } from './help-block.component';
 
-describe('FormGroupComponent', () => {
-  let component: FormGroupComponent;
-  let fixture: ComponentFixture<FormGroupComponent>;
+describe('HelpBlockComponent', () => {
+  let component: HelpBlockComponent;
+  let fixture: ComponentFixture<HelpBlockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FormGroupComponent]
+      declarations: [ HelpBlockComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormGroupComponent);
+    fixture = TestBed.createComponent(HelpBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

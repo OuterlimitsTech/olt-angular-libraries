@@ -8,9 +8,7 @@ import { IAddress } from '../interfaces/address.interface';
 })
 export class FormatAddressPipe implements PipeTransform {
 
-  constructor(private sanitizer: DomSanitizer) { }
-
-  transform(value: IAddress): SafeHtml | null {
+  protected format(value: IAddress): string | null {
     if (value == null) {
       return null;
     }
@@ -32,7 +30,23 @@ export class FormatAddressPipe implements PipeTransform {
       address += `${value.city}, ${value.state}  ${zip}`;
     }
 
-    return this.sanitizer.bypassSecurityTrustHtml(address);
+    return address;
+  }
+
+  constructor(protected sanitizer: DomSanitizer) { }
+
+  transform(value: IAddress): SafeHtml | null {
+
+    try {
+      if (value == null) {
+        return null;
+      }
+      const formatted = this.format(value);
+      return formatted != null ? this.sanitizer.bypassSecurityTrustHtml(formatted) : value;
+    } catch (error) {
+      console.error(value, error);
+      return value;
+    }
 
 
   }

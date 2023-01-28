@@ -1,4 +1,4 @@
 export interface IDomesticPhone {
-  number: string | null;
+  number?: string | null;
   ext?: string | null;
-  }
+}

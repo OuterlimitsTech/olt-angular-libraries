@@ -14,7 +14,9 @@ export class FilterByPipe implements PipeTransform {
     let found = false;
     do {
       if (
-        walker.hasOwnProperty(key) || Object.getOwnPropertyDescriptor(walker, key)) {
+        walker.hasOwnProperty(key) ||
+        Object.getOwnPropertyDescriptor(walker, key)
+      ) {
         found = true;
         break;
       }

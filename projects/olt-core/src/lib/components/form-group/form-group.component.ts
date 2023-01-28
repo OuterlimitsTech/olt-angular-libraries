@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, Input, ViewChild, AfterViewInit, AfterContentChecked } from '@angular/core';
 import { UntypedFormGroup, FormGroupName, ControlContainer, AbstractControl, FormGroupDirective } from '@angular/forms';
+import { IFormGroupComponentValidationState } from '../../interfaces/form-group-validation-state-component.interface';
+import { IFormGroupValidationState } from '../../interfaces/form-group-validation-state.interface';
+import { OltUtility } from './../../utilities/utility';
 
 const guid = () => {
   function s4() {
@@ -17,7 +20,7 @@ const guid = () => {
   styleUrls: ['./form-group.component.scss']
   // changeDetection: ChangeDetectionStrategy.Default
 })
-export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentChecked {
+export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentChecked, IFormGroupComponentValidationState {
   @Input()
   set validationLabel(value: string | null) {
     this._validationLabel = value;
@@ -32,17 +35,19 @@ export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentCh
     return 'This Field';
   }
 
+  @Input() cssClass = 'form-group';
   @Input() srOnly = false;
+  @Input() hideHelpBlock = false;
 
   // tslint:disable-next-line:variable-name
   private _validationLabel: string | null = null;
   private controlLabelMissing = '<span class="control-label">Label Here</span> missing';
   private dynamicControl = false;
   private configured = false;
-  private focused = false;
-  @ViewChild('control', { static: true }) control!: ElementRef;
-  @ViewChild('label', { static: true }) labelElementRef!: ElementRef;
   private name: string = 'formGroup_' + guid().substring(0, 8);
+
+  @ViewChild('control', { static: true }) control!: ElementRef;
+  @ViewChild('helpBlock', { static: true }) helpBlock!: ElementRef;
 
   constructor(private controlContainer: ControlContainer, private elRef: ElementRef) { }
 
@@ -73,15 +78,16 @@ export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentCh
     if (ele && this.controlId && ele.getAttribute('id') == null && ele.getAttribute('name') == null) {
       ele.id = this.controlId;
     }
-    const label = this.labelElementRef.nativeElement as HTMLLabelElement;
-    if (label && this.controlId && label.getAttribute('for') == null) {
-      label.setAttribute('for', this.controlId);
-    }
+
+    // const label = this.labelElementRef.nativeElement as HTMLLabelElement;
+    // if (label && this.controlId && label.getAttribute('for') == null) {
+    //   label.setAttribute('for', this.controlId);
+    // }
   }
 
-  get inputElement(): Element | null {
-    const span = this.control.nativeElement as HTMLSpanElement;
-    let ele = span.firstElementChild;
+  private get inputElement(): Element | null {
+    const spanElement = this.control.nativeElement as HTMLSpanElement;
+    let ele = spanElement?.firstElementChild;
     if (ele == null) {
       ele = this.elRef.nativeElement.querySelector('.form-control');
     }
@@ -113,11 +119,10 @@ export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentCh
     return this.name;
   }
 
-  get formControlName(): string {
-    const span = this.control.nativeElement as HTMLSpanElement;
-    const controlName = span?.firstElementChild?.getAttribute('formControlName');
+  private get formControlName(): string {
+    const controlName = this.inputElement?.getAttribute('formControlName');
     if (controlName == null) {
-      return this.elRef.nativeElement.querySelector('input').getAttribute('formControlName');
+      return this.elRef.nativeElement.querySelector('input')?.getAttribute('formControlName');
     }
     return controlName;
   }
@@ -150,10 +155,6 @@ export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentCh
     return this.formControl?.dirty === true && this.formControl?.valid === true;
   }
 
-  get isTouched(): boolean {
-    return this.formControl?.touched === true;
-  }
-
   get isRequired(): boolean {
     const errors = this.formControl?.errors;
     if (errors != null) {
@@ -163,7 +164,7 @@ export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentCh
     return false;
   }
 
-  get showRequiredIndicator(): boolean {
+  get showRequired(): boolean {
     if (this.isRequired) {
       if (this.formControl?.valid && this.formControl?.value != null) {
         return false;
@@ -173,78 +174,36 @@ export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentCh
     return false;
   }
 
-  get showSuccessIndicator(): boolean {
-    if (this.formControl?.valid && this.formControl?.value != null) {
+  get showSuccess(): boolean {
+    if (this.formControl?.dirty && this.formControl?.valid && this.formControl?.value != null) {
       return true;
     }
-    return (this.formControl?.touched === true || this.formControl?.dirty === true) && this.formControl?.valid === true;
+    return false;
   }
 
-  get showErrorIndicator(): boolean {
+  get showError(): boolean {
     return (this.formControl?.touched === true || this.formControl?.dirty === true) && this.formControl?.invalid === true;
   }
 
-  get isFocused(): boolean {
-    return this.focused;
+  get validationState(): IFormGroupValidationState {
+    return {
+      required: this.isRequired,
+      invalid: this.formControl?.invalid === true,
+      dirty: this.formControl?.dirty === true,
+      touched: this.formControl?.touched === true,
+      hasValue: this.formControl?.value != null
+    }
   }
-
-  set isFocused(focused: boolean) {
-    this.focused = focused;
-  }
-
-
 
   get label(): string {
     const label = this.elRef.nativeElement.querySelector('.control-label');
     return (label && label.textContent && label.textContent.trim()) || this.controlLabelMissing;
   }
 
-  public getFirstError(): string | null {
-    const errors = this.formControl?.errors;
-    let first: string | null = null;
-    for (const err in errors) {
-      if (errors.hasOwnProperty(err) && errors[err]) {
-        first = err;
-        break;
-      }
-    }
 
-    if (first != null) {
-      const displayLabel = this.validationLabel;
-      let msg = 'invalid';
-
-      switch (first) {
-        case 'minlength':
-          msg = 'too short';
-          break;
-        case 'maxlength':
-          msg = 'too long';
-          break;
-        case 'required':
-          msg = 'required';
-          break;
-        case 'min':
-          msg = 'too low';
-          break;
-        case 'max':
-          msg = 'too high';
-          break;
-        case 'email':
-          msg = 'invalid';
-          break;
-        default:
-          if (errors != null && errors[first] && errors[first]?.message != null) {
-            msg = errors[first]?.message;
-          }
-          // if (this.formControl.errors[first] && this.formControl.errors[first].message) {
-          //   msg = this.formControl.errors[first].message;
-          // }
-          break;
-      }
-      return `${displayLabel} is ${msg}.`;
-    }
-
-    return null;
+  get firstError(): string | null {
+    const errors = OltUtility.getFormValidationErrors(this.formControl, this.validationLabel);
+    return errors?.length > 0 ? errors[0].message : null;
   }
 
 }

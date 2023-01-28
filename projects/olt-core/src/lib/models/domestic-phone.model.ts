@@ -1,19 +1,20 @@
-import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { IDomesticPhone } from '../interfaces/domestic-phone.interface';
+
+export interface IDomesticPhoneForm {
+  number: FormControl<string | null>;
+  ext: FormControl<string | null>;
+}
 
 export class DomesticPhone implements IDomesticPhone {
   number!: string;
   ext?: string;
 
-  public static formGroup(fb: UntypedFormBuilder, required?: boolean): UntypedFormGroup {
-    const validators = new Array<Validators>();
-    validators.push(Validators.minLength(10));
-    if (required === true) {
-      validators.push(Validators.required);
-    }
-    return fb.group({
-      number: [null, validators],
-      ext: [null],
+  public static formGroup(fb: FormBuilder, required?: boolean): FormGroup<IDomesticPhoneForm> {
+    const validators = required === true ? [Validators.required, Validators.minLength(10)] : [Validators.minLength(10)];
+    return fb.group<IDomesticPhoneForm>({
+      number: new FormControl<string | null>(null, validators),
+      ext: new FormControl<string | null>(null)
     });
   }
 

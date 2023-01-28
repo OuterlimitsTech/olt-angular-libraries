@@ -1,22 +1,15 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ControlContainer, UntypedFormGroup, FormGroupDirective, FormGroupName } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { OltBaseViewComponent } from './base-view.component';
 
 @Component({
   template: ''
 })
-export abstract class OltBaseFormGroupComponent implements OnDestroy {
+export abstract class OltBaseFormGroupComponent extends OltBaseViewComponent {
 
-  private destroy$ = new Array<Subscription>();
+  protected controlContainer = inject(ControlContainer);
 
-  constructor(protected controlContainer: ControlContainer) { }
-
-
-  ngOnDestroy(): void {
-    this.destroy$.forEach(sub$ => {
-      sub$.unsubscribe();
-    });
-  }
+  constructor() { super(); }
 
   get formGroup(): UntypedFormGroup {
     if (this.controlContainer instanceof FormGroupName) {
@@ -34,9 +27,5 @@ export abstract class OltBaseFormGroupComponent implements OnDestroy {
     throw new Error('invalid');
   }
 
-
-  protected set unsub(sub$: Subscription) {
-    this.destroy$.push(sub$);
-  }
 
 }
