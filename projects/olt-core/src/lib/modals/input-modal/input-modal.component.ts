@@ -1,15 +1,17 @@
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { InputModal, InputModalResponse } from '../../models';
+import { OltUtility } from '../../utilities/utility';
+
 
 @Component({
   templateUrl: './input-modal.component.html',
   styleUrls: ['./input-modal.component.scss']
 })
 export class InputModalComponent extends BaseModalComponent implements OnInit {
-  entryForm: UntypedFormGroup = this.createForm();
+  entryForm: FormGroup = this.createForm();
   settings!: InputModal;
   response = new InputModalResponse();
   dateValue!: Date;
@@ -17,13 +19,12 @@ export class InputModalComponent extends BaseModalComponent implements OnInit {
 
   constructor(
     public bsModalRef: BsModalRef,
-    private fb: UntypedFormBuilder
   ) { super(); }
 
   ngOnInit(): void { }
 
-  public createForm(): UntypedFormGroup {
-    return this.fb.group({
+  public createForm(): FormGroup<any> {
+    return new FormGroup<any>({
       value: [this.settings?.value, [Validators.required]]
     });
   }
@@ -31,9 +32,7 @@ export class InputModalComponent extends BaseModalComponent implements OnInit {
 
   save(): void {
     if (this.entryForm.invalid) {
-      this.entryForm.markAsDirty();
-      this.entryForm.markAsTouched();
-      this.entryForm.markAllAsTouched();
+      OltUtility.triggerValidators(this.entryForm);
       return;
     }
 

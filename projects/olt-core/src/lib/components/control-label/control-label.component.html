@@ -1,0 +1,14 @@
+<label class="form-label olt-form-label" [attr.for]="for" [class.sr-only]="srOnly === true"
+  [class.visually-hidden]="srOnly === true">
+  <ng-content>
+  </ng-content>
+  <span *ngIf="required" class="required" role="presentation">
+    <i class="fas fa-asterisk"></i>
+  </span>
+  <span *ngIf="error" class="required" role="presentation">
+    <i class="fas fa-times-circle"></i>
+  </span>
+  <span *ngIf="success" class="valid" role="presentation">
+    <i class="fa fa-check-circle"></i>
+  </span>
+</label>

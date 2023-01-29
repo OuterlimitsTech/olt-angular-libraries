@@ -15,4 +15,5 @@ export * from './lib/utilities/index';
 export * from './lib/guards/index';
 export * from './lib/services/index';
 export * from './lib/views/index';
+export * from './lib/validators/index';
 export * from './lib/olt-core.module';
