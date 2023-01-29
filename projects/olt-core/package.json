@@ -1,18 +1,30 @@
 {
-  "name": "@outerlimitstech/core",
+  "name": "@outerlimitstech/ngx-app-core",
   "version": "15.0.0-beta.1",
+  "description": "Common Angular components, models, etc. for OuterLimits Technologies applications",
+  "bugs": "https://github.com/OuterlimitsTech/olt-angular-libraries/issues",
+  "homepage": "https://github.com/OuterlimitsTech/olt-angular-libraries#readme",
+  "repository": "https://github.com/OuterlimitsTech/olt-angular-libraries.git",
+  "license": "MIT",
+  "author": "Chris Straw",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "angular"
+  ],
   "peerDependencies": {
-    "@angular/common": ">=15.0.0",
-    "@angular/core": ">=15.0.0",
-    "@angular/forms": ">=15.0.0",
-    "@angular/platform-browser": ">=15.0.0",
-    "@angular/router": ">=15.0.0",
-    "error-stack-parser": ">=2.0.0",
-    "ngx-bootstrap": ">=10.0.0",
-    "ngx-logger": ">=5.0.11",
-    "ngx-toastr": ">=16.0.0"
+    "@angular/common": ">=15.0.0 <16.0.0",
+    "@angular/core": ">=15.0.0 <16.0.0",
+    "@angular/forms": ">=15.0.0 <16.0.0",
+    "@angular/platform-browser": ">=15.0.0 <16.0.0",
+    "@angular/router": ">=15.0.0 <16.0.0",
+    "error-stack-parser": ">=2.0.0 <3.0.0",
+    "ngx-bootstrap": ">=10.0.0 <11.0.0",
+    "ngx-logger": ">=5.0.11 <6.0.0",
+    "ngx-toastr": ">=16.0.0 <17.0.0"
   },
   "dependencies": {
-    "tslib": "^2.2.0"
+    "tslib": "^2.3.0"
   }
 }
