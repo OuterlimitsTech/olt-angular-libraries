@@ -1,12 +1,13 @@
 {
   "name": "olt-core",
-  "version": "14.0.0",
+  "version": "15.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "postbuild": "xcopy \"README.md\" \".\\dist\\olt-core\" \/Y"
   },
   "private": true,
   "dependencies": {
