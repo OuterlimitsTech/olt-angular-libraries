@@ -1,6 +1,6 @@
 {
   "name": "@olt/core",
-  "version": "14.0.2",
+  "version": "14.2.10",
   "peerDependencies": {
     "@angular/common": ">=14.0.0",
     "@angular/core": ">=14.0.0",
