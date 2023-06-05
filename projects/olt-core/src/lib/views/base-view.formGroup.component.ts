@@ -23,7 +23,7 @@ export abstract class OltBaseFormGroupComponent extends OltBaseViewComponent {
     if (this.controlContainer instanceof FormGroupDirective) {
       return (this.controlContainer as FormGroupDirective).control;
     }
-    console.error(`Invalid form-group court container ${this.controlContainer}`);
+    console.error(`Invalid form-group container ${this.controlContainer}`);
     throw new Error('invalid');
   }
 

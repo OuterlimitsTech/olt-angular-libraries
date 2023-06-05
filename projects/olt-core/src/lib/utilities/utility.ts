@@ -7,6 +7,24 @@ declare let dayjs: any;
 
 export class OltUtility {
 
+    public static baseUrl(): string {
+        const url = document.getElementsByTagName('base')[0].href;
+        if (url.endsWith('/')) {
+            return url.substring(0, (url.length - 1));
+        }
+        return url;
+    }
+
+    public static resolveRelativeUrl(url: string): string | null {
+        if (url == null || url == undefined) {
+            return null;
+        }
+        if (url.startsWith('~/')) {
+            return url.replace('~/', `${this.baseUrl()}/`);
+        }
+        return url;
+    }
+
     public static findProp(obj: any, prop: any, defval: any): any {
         if (typeof defval === undefined) {
             defval = null;
@@ -354,5 +372,6 @@ export class OltUtility {
             return new Date(paramDateValue.getFullYear(), paramDateValue.getMonth(), paramDateValue.getDate());
         }
     }
+
 
 }

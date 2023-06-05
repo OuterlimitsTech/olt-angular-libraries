@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ToastrService, IndividualConfig } from 'ngx-toastr';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { IBroadcastMessage } from '../interfaces';
+import { OltUtility } from '../utilities/utility';
 
 
 @Injectable({
@@ -26,11 +27,12 @@ export class OltHelperService {
     *
     */
     public get baseUrl(): string {
-        const url = document.getElementsByTagName('base')[0].href;
-        if (url.endsWith('/')) {
-            return url.substring(0, (url.length - 1));
-        }
-        return url;
+        return OltUtility.baseUrl();
+        // const url = document.getElementsByTagName('base')[0].href;
+        // if (url.endsWith('/')) {
+        //     return url.substring(0, (url.length - 1));
+        // }
+        // return url;
     }
 
     /*
@@ -41,10 +43,11 @@ export class OltHelperService {
     *
     */
     public resolveUrl(url: string): string {
-        if (url.startsWith('~/')) {
-            return url.replace('~/', `${this.baseUrl}/`);
-        }
-        return url;
+        return OltUtility.resolveRelativeUrl(url) ?? url;
+        // if (url.startsWith('~/')) {
+        //     return url.replace('~/', `${this.baseUrl}/`);
+        // }
+        // return url;
     }
 
     /*
@@ -55,6 +58,10 @@ export class OltHelperService {
     *
     */
     public buildUrl(baseUrl: string, uri: string): string {
+        if (uri.startsWith('http')) {
+            return uri;
+        }
+
         const url = this.resolveUrl(baseUrl);
         if (uri.startsWith('/') || url.endsWith('/')) {
             return `${url}${uri}`;
