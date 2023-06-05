@@ -14,8 +14,8 @@ export class PagedParam implements IApiParam {
             return;
         }
 
-        this.page = +params.get('page') || 1;
-        this.size = +params.get('size') || 10;
+        this.page = OltUtility.toInt(params.get('page'), 1);
+        this.size = OltUtility.toInt(params.get('size'), 10);
     }
 
     getAll(): Array<ApiParameter> {

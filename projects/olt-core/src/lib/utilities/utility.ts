@@ -54,7 +54,7 @@ export class OltUtility {
     }
 
     public static isNumber(value: any): boolean {
-        return ((value != null) && !isNaN(Number(value.toString())));
+        return (this.isNotNullOrEmptyOrUndefined(value) && !isNaN(Number(value.toString())));
     }
 
     public static isArray(value: any): boolean {
