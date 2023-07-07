@@ -16,8 +16,10 @@
     "moduleResolution": "node",
     "paths": {
       "olt-core": [
-        "dist/olt-core/olt-core",
         "dist/olt-core"
+      ],
+      "olt-ngx-bootstrap": [
+        "dist/olt-ngx-bootstrap"
       ]
     },
     "importHelpers": true,
