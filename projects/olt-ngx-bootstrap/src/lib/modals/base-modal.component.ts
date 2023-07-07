@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalTypeEnum } from '../enums';
-import { IModal } from '../interfaces/modal.interface';
+import { IModal, ModalTypeEnum } from '@olt-core';
 
 @Component({
     template: ''

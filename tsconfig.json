@@ -15,10 +15,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "paths": {
-      "olt-core": [
+      "@olt-core": [
         "dist/olt-core"
       ],
-      "olt-ngx-bootstrap": [
+      "@olt-ngx-bootstrap": [
         "dist/olt-ngx-bootstrap"
       ]
     },

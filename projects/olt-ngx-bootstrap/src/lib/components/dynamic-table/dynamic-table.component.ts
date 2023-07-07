@@ -1,8 +1,6 @@
 import { Component, EventEmitter, ElementRef, Output, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { IPaged, IPagerChangeEvent, PagerChangeEvent } from '@olt-core';
 import { timer } from 'rxjs';
-import { IPaged } from '../../interfaces/paged.interface';
-import { IPagerChangeEvent } from '../../interfaces/pager-change-event.interface';
-import { PagerChangeEvent } from '../../models/pager-change-event.model';
 
 @Component({
   selector: 'olt-dynamic-table',

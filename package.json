@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production",
+    "build": "ng build olt-core --configuration production && ng build olt-ngx-bootstrap --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postbuild": "xcopy \"README.md\" \".\\dist\\olt-core\" /Y"
+    "postbuild": "xcopy \"projects\\olt-core\\README.md\" \".\\dist\\olt-core\" /Y"
   },
   "private": true,
   "dependencies": {

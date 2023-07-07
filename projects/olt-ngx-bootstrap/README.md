@@ -1,24 +1,14 @@
-# OltNgxBootstrap
+<img src="https://user-images.githubusercontent.com/1365728/127748628-47575d74-a2fb-4539-a31e-74d8b435fc21.png" width="30%" >
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+# OLT Angular Library
 
-## Code scaffolding
+_This library contains common Angular components, models, directives, and utilities._
 
-Run `ng generate component component-name --project olt-ngx-bootstrap` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project olt-ngx-bootstrap`.
-> Note: Don't forget to add `--project olt-ngx-bootstrap` or else it will be added to the default project in your `angular.json` file. 
+## Model Definitions
 
-## Build
+_Some of the models work in conjunction with the OLT Core Library Json Models_
 
-Run `ng build olt-ngx-bootstrap` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build olt-ngx-bootstrap`, go to the dist folder `cd dist/olt-ngx-bootstrap` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test olt-ngx-bootstrap` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| TypeScript                                                            | OLT Core Model                                                                                                                         | Definition                   |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| [Paged<T>](./projects/olt-core/src/lib/models/paged.model.ts)         | [OltPagedJson<TModel>](https://github.com/OuterlimitsTech/olt-dotnet-core/blob/master/src/OLT.Core.Common/Models/Json/OltPagedJson.cs) | Paged Result                 |
+| [PersonName](./projects/olt-core/src/lib/models/person-name.model.ts) | [OltPersonName](https://github.com/OuterlimitsTech/olt-dotnet-core/blob/master/src/OLT.Core.Common/Models/PersonName/OltPersonName.cs) | Person's Name with (F/M/L/S) |

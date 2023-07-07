@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { AlertModal } from '../../models';
+import { AlertModal } from '@olt-core';
 import { BaseModalComponent } from '../base-modal.component';
 
 @Component({

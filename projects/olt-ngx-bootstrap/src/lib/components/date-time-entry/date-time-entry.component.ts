@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, merge } from 'rxjs';
-import { OltUtility } from '../../utilities';
-import { OltBaseFormGroupComponent } from '../../views/base-view.formGroup.component';
+import { OltBaseFormGroupComponent, OltUtility } from '@olt-core';
 
 @Component({
   selector: 'olt-date-time-entry, [formGroupName] olt-date-time-entry, [formGroup] olt-date-time-entry',

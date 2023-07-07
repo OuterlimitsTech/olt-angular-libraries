@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { ModalTypeEnum } from '../../enums';
-import { ConfirmModal } from '../../models';
-
+import { ConfirmModal, ModalTypeEnum } from '@olt-core';
 
 @Component({
   templateUrl: './confirm-modal.component.html',
