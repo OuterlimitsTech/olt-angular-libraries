@@ -9,7 +9,8 @@ export class AppComponent {
   title = 'test-app';
 
   status: boolean = false;
-  clickEvent(){
+
+  toggle() {
       this.status = !this.status;       
-  }
+    }
 }
