@@ -1,14 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { OltNgxBootstrapModule } from '@olt-ngx-bootstrap';
+import { OltCoreModule } from '@olt-core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OltNgxBootstrapModule } from '@olt-ngx-bootstrap';
-import { OltCoreModule } from '@olt-core';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { DateTimePickerComponent } from './views/ngx-bootstrap/date-time-picker/date-time-picker.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { TestDateEntryComponent } from './components/test-date-entry/test-date-entry.component';
+
+export function getBsDatepickerConfig(): BsDatepickerConfig {
+  return Object.assign(new BsDatepickerConfig(), {
+    dateInputFormat: 'M/D/YYYY',
+    containerClass: 'theme-default',
+    showWeekNumbers: false
+  });
+}
 
 @NgModule({
   declarations: [
@@ -16,15 +28,25 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     DateTimePickerComponent,
     LandingComponent,
     SideBarComponent,
-    NavBarComponent
+    NavBarComponent,
+    TestDateEntryComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     OltCoreModule,
-    OltNgxBootstrapModule
+    OltNgxBootstrapModule,
+    BsDatepickerModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: BsDatepickerConfig,
+      useFactory: getBsDatepickerConfig
+    },    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

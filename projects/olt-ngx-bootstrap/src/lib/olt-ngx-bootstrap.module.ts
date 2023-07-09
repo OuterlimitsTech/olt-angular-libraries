@@ -20,7 +20,7 @@ import { DECLARE_COMPONENTS, EXPORT_COMPONENTS } from './components/exports';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,
     ModalModule.forRoot(),
     PaginationModule.forRoot(),
     TimepickerModule.forRoot(),
