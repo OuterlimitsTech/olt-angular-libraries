@@ -6,5 +6,13 @@ _Components that utilize ngx-bootstrap._
 
 
 
+## Models
+
+_Some of the models work in conjunction with the OLT Core Library Json Models_
+
+| TypeScript                                                            | OLT Core Model                                                                                                                         | Definition                   |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| [Paged<T>](./src/lib/models/paged.model.ts)         | [OltPagedJson<TModel>](https://github.com/OuterlimitsTech/olt-dotnet-core/blob/master/src/OLT.Core.Common/Models/Json/OltPagedJson.cs) | Paged Result                 |
+| [PersonName](./src/lib/models/person-name.model.ts) | [OltPersonName](https://github.com/OuterlimitsTech/olt-dotnet-core/blob/master/src/OLT.Core.Common/Models/PersonName/OltPersonName.cs) | Person's Name with (F/M/L/S) |
 
 

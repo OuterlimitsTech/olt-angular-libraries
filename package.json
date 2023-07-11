@@ -8,7 +8,7 @@
     "watch-core": "ng build olt-core --watch --configuration development",
     "watch-ngx-bootstrap": "ng build olt-ngx-bootstrap --watch --configuration development",
     "test": "ng test",
-    "postbuild": "xcopy \"projects\\olt-core\\README.md\" \".\\dist\\olt-core\" /Y"
+    "postbuild": "xcopy \"projects\\olt-core\\README.md\" \".\\dist\\olt-core\" /Y && xcopy \"projects\\olt-ngx-bootstrap\\README.md\" \".\\dist\\olt-ngx-bootstrap\" /Y"
   },
   "private": true,
   "dependencies": {

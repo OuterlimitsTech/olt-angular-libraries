@@ -67,7 +67,7 @@ export function getBsTimepickerConfig(): TimepickerConfig {
     BrowserAnimationsModule,
     AppRoutingModule,
     OltCoreModule,
-    // OltNgxBootstrapModule,
+    // OltNgxModuleModule,
     OltNgxDatePickerModule,
     OltNgxDateTimePickerModule,
     BsDatepickerModule.forRoot(),

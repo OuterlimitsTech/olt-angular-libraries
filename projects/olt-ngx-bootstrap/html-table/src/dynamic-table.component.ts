@@ -3,14 +3,14 @@ import { IPaged, IPagerChangeEvent, PagerChangeEvent } from '@olt-core';
 import { timer } from 'rxjs';
 
 @Component({
-  selector: 'olt-dynamic-table',
+  selector: 'olt-dynamic-table, olt-ngx-table',
   templateUrl: './dynamic-table.component.html',
   styleUrls: ['./dynamic-table.component.scss']
 })
 export class DynamicTableComponent implements OnChanges {
   @Input() loading = false;
   @Input() showSizes = true;
-  @Input() paged!: IPaged<any>;
+  @Input() paged!: IPaged<any>; // = { page: 1, size: 10, count: 0, data: [] };
   @Input() tableCss = 'table table-striped table-hover';
   @Input() tableResponsiveCss = 'table-responsive-xl';
   @Input() showPager = true;

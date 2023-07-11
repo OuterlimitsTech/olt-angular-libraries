@@ -9,7 +9,7 @@
 
     <div class="row" [ngSwitch]="settings?.inputType">
       <div class="col-12" *ngSwitchCase="'datepicker' || 'datetimepicker'">
-        <olt-form-group>
+        <!-- <olt-form-group>
           <span class="control-label">{{ settings?.inputLabel }}</span>
           <div class="input-group">
             <input class="form-control" placeholder="m/d/yyyy" #d="bsDatepicker" formControlName="value" bsDatepicker>
@@ -20,11 +20,11 @@
               </button>
             </div>
           </div>
-        </olt-form-group>
+        </olt-form-group> -->
       </div>
 
       <div class="col-12" *ngSwitchCase="'datetimepicker'">
-        <olt-form-group>
+        <!-- <olt-form-group>
           <span class="control-label">{{ settings?.inputLabel }}</span>
           <div class="input-group">
             <input class="form-control" placeholder="m/d/yyyy" #d="bsDatepicker" formControlName="value" bsDatepicker>
@@ -35,7 +35,7 @@
               </button>
             </div>
           </div>
-        </olt-form-group>
+        </olt-form-group> -->
       </div>
 
       <div class="col-12" *ngSwitchCase="'text-area'">

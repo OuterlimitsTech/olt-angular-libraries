@@ -10,6 +10,4 @@ export const DECLARE_MODAL_COMPONENTS = [
   InputModalComponent
 ];
 
-export const EXPORT_MODAL_COMPONENTS = [
-];
 
