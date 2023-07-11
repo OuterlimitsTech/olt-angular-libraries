@@ -1,17 +1,22 @@
 <p>date-time-picker works!</p>
 
-
 <form [formGroup]="entryForm" (ngSubmit)="save()" novalidate>
   <div class="mb-5">
-      <olt-test-date-entry formControlName="date"></olt-test-date-entry>
-    </div>
+    <olt-test-date-entry formControlName="date"></olt-test-date-entry>
+  </div>
 
-    <div class="mb-5">
-          <olt-form-group>
+  <div class="mb-5">
+    <olt-form-group>
+      <span class="control-label">Date3</span>
+      <olt-test-date-entry formControlName="date3"></olt-test-date-entry>
+    </olt-form-group>
+  </div>
+
+  <div class="mb-5">
+    <olt-form-group>
       <span class="control-label">Date2</span>
       <div class="input-group">
-        <input type="text" class="form-control" #datePicker="bsDatepicker" bsDatepicker placeholder="mm/dd/yyyy"
-          aria-label="date" aria-describedby="date" formControlName="date2" >
+        <input type="text" class="form-control" #datePicker="bsDatepicker" bsDatepicker placeholder="mm/dd/yyyy" aria-label="date" aria-describedby="date" formControlName="date2"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button" (click)="datePicker.toggle()">
             <i class="fa fa-calendar"></i>
@@ -19,13 +24,11 @@
         </div>
       </div>
     </olt-form-group>
-    </div>
-    <div class="text-end">
-      <button class="btn btn-primary" type="submit">
-        <i class="fas fa-save"></i>
-        Save
-      </button>
-    </div>
-  </form>
-
-  
+  </div>
+  <div class="text-end">
+    <button class="btn btn-primary" type="submit">
+      <i class="fas fa-save"></i>
+      Save
+    </button>
+  </div>
+</form>

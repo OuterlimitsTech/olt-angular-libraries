@@ -1,9 +1,9 @@
 {
   "name": "@outerlimitstech/app-ngx-bootstrap",
-  "version": "0.0.1",
+  "version": "16.0.0-beta.1",
   "peerDependencies": {
-    "@angular/common": ">=16.0.0 <17.0.0",
-    "@angular/core": ">=16.0.0 <17.0.0",
+    "@angular/common": ">=16.0.0",
+    "@angular/core": ">=16.0.0",
     "ngx-bootstrap": ">=10.0.0"
   },
   "dependencies": {

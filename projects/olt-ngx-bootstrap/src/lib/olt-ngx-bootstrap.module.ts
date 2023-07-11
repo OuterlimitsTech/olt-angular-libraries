@@ -14,7 +14,7 @@ import { DECLARE_COMPONENTS, EXPORT_COMPONENTS } from './components/exports';
 
 @NgModule({
   declarations: [
-    DECLARE_COMPONENTS,
+    DECLARE_COMPONENTS,    
     DECLARE_MODAL_COMPONENTS
   ],
   imports: [

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OltUtility } from '@olt-core';
 
 @Component({
@@ -14,6 +14,7 @@ export class DateTimePickerComponent {
     return new FormGroup<any>({
       date: new FormControl<Date | null>(null),
       date2: new FormControl<Date | null>(null),
+      date3: new FormControl<Date | null>(new Date(), [Validators.required]),
       time: new FormControl<Date | null>(null)
     })
   }

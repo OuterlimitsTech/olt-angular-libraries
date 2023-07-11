@@ -1,6 +1,5 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { OltBaseFormGroupComponent } from '@olt-core';
 
 // const guid = () => {
 //   function s4() {
@@ -24,7 +23,7 @@ import { OltBaseFormGroupComponent } from '@olt-core';
     }
   ]
 })
-export class TestDateEntryComponent extends OltBaseFormGroupComponent implements ControlValueAccessor  {
+export class TestDateEntryComponent implements ControlValueAccessor  {
   // @Input() formControlName!: string;
   @Input() min: Date = new Date('0001-01-01T00:00:00Z');
   @Input() max: Date = new Date('9999-12-31T23:59:59Z');
@@ -66,7 +65,14 @@ export class TestDateEntryComponent extends OltBaseFormGroupComponent implements
 
   writeValue(value: Date | null): void {
     console.log('date', value);
+    // if(value != null && OltUtility.isDate(value)) {
+    //   this.value = new Date(value.toDateString());
+    // } else {
+    //   this.value = value;
+    // }
+    
     this.value = value;
+
     // if (this.value === true) {
     //   this.yesOption.nativeElement.checked = false;
     // } else if (this.value === false) {
