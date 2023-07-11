@@ -4,7 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 // import { OltNgxBootstrapModule } from '@olt-ngx-bootstrap';
+
 import { OltNgxDatePickerModule } from '@olt-ngx-bootstrap/date-picker';
+import { OltNgxDateTimePickerModule } from '@olt-ngx-bootstrap/date-time-picker';
+
 import { OltCoreModule } from '@olt-core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,15 +18,32 @@ import { LandingComponent } from './views/landing/landing.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TestDateEntryComponent } from './components/test-date-entry/test-date-entry.component';
 import { TestDateTimeEntryComponent } from './components/test-date-time-entry/test-date-time-entry.component';
-import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { TimepickerConfig, TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { DateMaskInputDirective } from './directives/date-mask.directive';
 import { OltBsDatepickerDirective, OltNgxBsDatepickerInputDirective } from './directives/bs-datepicker.component';
+
 
 export function getBsDatepickerConfig(): BsDatepickerConfig {
   return Object.assign(new BsDatepickerConfig(), {
     dateInputFormat: 'M/D/YYYY',
     containerClass: 'theme-default',
     showWeekNumbers: false
+  });
+}
+
+export function getBsTimepickerConfig(): TimepickerConfig {
+  return Object.assign(new TimepickerConfig(), {
+    hourStep: 2,
+    minuteStep: 10,
+    showMeridian: false,
+    readonlyInput: false,
+    mousewheel: true,
+    showMinutes: true,
+    showSeconds: false,
+    showSpinners: false,
+    labelHours: 'Hours',
+    labelMinutes: 'Minutes',
+    labelSeconds: 'Seconds'
   });
 }
 
@@ -49,6 +69,7 @@ export function getBsDatepickerConfig(): BsDatepickerConfig {
     OltCoreModule,
     // OltNgxBootstrapModule,
     OltNgxDatePickerModule,
+    OltNgxDateTimePickerModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
   ],
@@ -56,7 +77,11 @@ export function getBsDatepickerConfig(): BsDatepickerConfig {
     {
       provide: BsDatepickerConfig,
       useFactory: getBsDatepickerConfig
-    },    
+    },
+    // {
+    //   provide: TimepickerConfig,
+    //   useFactory: getBsTimepickerConfig
+    // },  
   ],
   bootstrap: [AppComponent]
 })

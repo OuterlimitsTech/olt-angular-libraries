@@ -30,14 +30,14 @@
   <div class="mb-5">
     <olt-form-group>
       <span class="control-label">Date/Time 1</span>
-      <olt-test-date-time-entry formControlName="dateTime1" placeholder="m/d/yyyy"></olt-test-date-time-entry>
+      <olt-ngx-datetime-picker formControlName="dateTime1" placeholder="m/d/yyyy" />
     </olt-form-group>    
   </div>
 
   <div class="mb-5">
     <olt-form-group>
       <span class="control-label">Date/Time 2</span>
-      <olt-test-date-time-entry formControlName="dateTime2" [max]="midnight" [min]="oneWeekAgo"></olt-test-date-time-entry>
+      <olt-test-date-time-entry formControlName="dateTime2" [max]="midnight" [min]="oneWeekAgo" />
     </olt-form-group>    
   </div>
 

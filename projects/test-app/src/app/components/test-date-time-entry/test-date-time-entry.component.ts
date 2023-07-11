@@ -19,12 +19,10 @@ import { OltUtility } from '@olt-core';
     }   
   ]
 })
-export class TestDateTimeEntryComponent  implements ControlValueAccessor, Validator  {
+export class TestDateTimeEntryComponent implements ControlValueAccessor, Validator  {
   @Input() placeholder: string | null = "mm/dd/yyyy";
   @Input() min: Date = new Date('0001-01-01T00:00:00Z');
   @Input() max: Date = new Date('9999-12-31T23:59:59Z');
-  @Input() showMeridian = true;
-
   
   dateValue: Date | any | null = null;  
   timeValue: Date | any | null = null;  
