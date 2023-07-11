@@ -1,0 +1,35 @@
+<div class="modal-header" [ngClass]="headerCss">
+  <h4 class="modal-title pull-left text-uppercase m-0 p-0">{{ settings?.title }}</h4>
+</div>
+
+<form [formGroup]="entryForm" (ngSubmit)="save()" novalidate>
+
+  <div class="modal-body">
+    <h5 *ngIf="settings?.message != null">{{ settings?.message }}</h5>
+
+    <div class="row" [ngSwitch]="settings?.inputType">   
+
+      <div class="col-12" *ngSwitchCase="'text-area'">
+        <olt-form-group>
+          <span class="control-label">{{ settings?.inputLabel }}</span>
+          <textarea class="form-control" formControlName="value" rows="6">
+            </textarea>
+        </olt-form-group>
+      </div>
+
+      <div class="col-12" *ngSwitchDefault>
+        <olt-form-group>
+          <span class="control-label">{{ settings?.inputLabel }}</span>
+          <input type="text" class="form-control" maxlength="50" formControlName="value">
+        </olt-form-group>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" [ngClass]="primaryButtonCss">{{ settings?.buttons?.primary }}</button>
+    <button type="button" [ngClass]="closeButtonCss" (click)="bsModalRef.hide()">{{ settings?.buttons?.cancel }}
+    </button>
+  </div>
+
+
+</form>

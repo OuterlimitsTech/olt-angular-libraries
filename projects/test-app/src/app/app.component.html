@@ -1,0 +1,27 @@
+<!-- <div class="d-flex">
+  <div class="me-2">
+    <ul>
+      <li>
+        <a routerLink="/ngx-bootstrap/date-time-picker">Date/Time Picker</a>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+
+<div class="d-flex" id="wrapper">
+  <app-side-bar [status]="status"></app-side-bar>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <app-nav-bar (toggleSidebar)="toggle()"></app-nav-bar>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->

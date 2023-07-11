@@ -1,0 +1,10 @@
+<div class="input-group">
+  <input type="text" class="form-control" #datePicker="bsDatepicker" bsDatepicker placeholder="mm/dd/yyyy"
+    aria-label="date" aria-describedby="date"  [minDate]="min" [maxDate]="max"
+    [disabled]="disabled" [(ngModel)]="value" (ngModelChange)="onChange2($event)" (blur)="onTouched()">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" (click)="datePicker.toggle()">
+      <i class="fa fa-calendar"></i>
+    </button>
+  </div>
+</div>

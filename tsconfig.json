@@ -15,10 +15,18 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "paths": {
-      "olt-core": [
-        "dist/olt-core/olt-core",
+      "@olt-core": [
         "dist/olt-core"
-      ]
+      ],
+      "@olt-ngx-bootstrap/*": [
+        "projects/olt-ngx-bootstrap/*",
+      ],
+      "@olt-ngx-bootstrap": [
+        "projects/olt-ngx-bootstrap",
+      ]      
+      // "@olt-ngx-bootstrap": [
+      //   "dist/olt-ngx-bootstrap"
+      // ]
     },
     "importHelpers": true,
     "target": "ES2022",

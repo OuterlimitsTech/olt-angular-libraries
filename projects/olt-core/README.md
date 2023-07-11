@@ -1,24 +1,18 @@
-# OltCore
+<img src="https://user-images.githubusercontent.com/1365728/127748628-47575d74-a2fb-4539-a31e-74d8b435fc21.png" width="30%" >
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+# OLT Angular Library 
 
-## Code scaffolding
+_Components that utilize ngx-bootstrap._
 
-Run `ng generate component component-name --project olt-core` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project olt-core`.
-> Note: Don't forget to add `--project olt-core` or else it will be added to the default project in your `angular.json` file. 
 
-## Build
 
-Run `ng build olt-core` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Models
 
-## Publishing
+_Some of the models work in conjunction with the OLT Core Library Json Models_
 
-After building your library with `ng build olt-core`, go to the dist folder `cd dist/olt-core` and run `npm publish`.
+| TypeScript                                                            | OLT Core Model                                                                                                                         | Definition                   |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| [Paged<T>](./src/lib/models/paged.model.ts)         | [OltPagedJson<TModel>](https://github.com/OuterlimitsTech/olt-dotnet-core/blob/master/src/OLT.Core.Common/Models/Json/OltPagedJson.cs) | Paged Result                 |
+| [PersonName](./src/lib/models/person-name.model.ts) | [OltPersonName](https://github.com/OuterlimitsTech/olt-dotnet-core/blob/master/src/OLT.Core.Common/Models/PersonName/OltPersonName.cs) | Person's Name with (F/M/L/S) |
 
-## Running unit tests
 
-Run `ng test olt-core` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

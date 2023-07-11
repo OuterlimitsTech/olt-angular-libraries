@@ -1,0 +1,7 @@
+{
+  "npm.scriptExplorerExclude": [
+    "/dist"
+  ],
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}
