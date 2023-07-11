@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { OltNgxBootstrapModule } from '@olt-ngx-bootstrap';
+// import { OltNgxBootstrapModule } from '@olt-ngx-bootstrap';
+import { OltNgxDatePickerModule } from '@olt-ngx-bootstrap/date-picker';
 import { OltCoreModule } from '@olt-core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +39,8 @@ export function getBsDatepickerConfig(): BsDatepickerConfig {
     BrowserAnimationsModule,
     AppRoutingModule,
     OltCoreModule,
-    OltNgxBootstrapModule,
+    // OltNgxBootstrapModule,
+    OltNgxDatePickerModule,
     BsDatepickerModule.forRoot(),
   ],
   providers: [
