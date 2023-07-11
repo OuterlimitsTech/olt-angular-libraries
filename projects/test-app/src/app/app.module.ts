@@ -14,6 +14,10 @@ import { DateTimePickerComponent } from './views/ngx-bootstrap/date-time-picker/
 import { LandingComponent } from './views/landing/landing.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TestDateEntryComponent } from './components/test-date-entry/test-date-entry.component';
+import { TestDateTimeEntryComponent } from './components/test-date-time-entry/test-date-time-entry.component';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { DateMaskInputDirective } from './directives/date-mask.directive';
+import { OltBsDatepickerDirective, OltNgxBsDatepickerInputDirective } from './directives/bs-datepicker.component';
 
 export function getBsDatepickerConfig(): BsDatepickerConfig {
   return Object.assign(new BsDatepickerConfig(), {
@@ -30,7 +34,11 @@ export function getBsDatepickerConfig(): BsDatepickerConfig {
     LandingComponent,
     SideBarComponent,
     NavBarComponent,
-    TestDateEntryComponent
+    TestDateEntryComponent,
+    TestDateTimeEntryComponent,
+    DateMaskInputDirective,
+    OltNgxBsDatepickerInputDirective,
+    OltBsDatepickerDirective
   ],
   imports: [
     BrowserModule,
@@ -42,6 +50,7 @@ export function getBsDatepickerConfig(): BsDatepickerConfig {
     // OltNgxBootstrapModule,
     OltNgxDatePickerModule,
     BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
   ],
   providers: [
     {
