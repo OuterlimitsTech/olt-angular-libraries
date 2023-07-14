@@ -3,11 +3,12 @@
   "version": "15.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --configuration production",
-    "watch": "ng build --watch --configuration development",
+    "start": "ng serve test-app",
+    "build": "ng build olt-core --configuration production && ng build olt-ngx-bootstrap --configuration production",
+    "watch-core": "ng build olt-core --watch --configuration development",
+    "watch-ngx-bootstrap": "ng build olt-ngx-bootstrap --watch --configuration development",
     "test": "ng test",
-    "postbuild": "xcopy \"README.md\" \".\\dist\\olt-core\" \/Y"
+    "postbuild": "xcopy \"projects\\olt-core\\README.md\" \".\\dist\\olt-core\" /Y && xcopy \"projects\\olt-ngx-bootstrap\\README.md\" \".\\dist\\olt-ngx-bootstrap\" /Y"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +20,7 @@
     "@angular/platform-browser": "^15.1.2",
     "@angular/platform-browser-dynamic": "^15.1.2",
     "@angular/router": "^15.1.2",
+    "bootstrap": "^5.3.0",
     "error-stack-parser": "^2.1.4",
     "ngx-bootstrap": "^10.2.0",
     "ngx-logger": "^5.0.11",

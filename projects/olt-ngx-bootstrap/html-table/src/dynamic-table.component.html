@@ -1,0 +1,48 @@
+<div [ngClass]="tableResponsiveCss">
+  <table [ngClass]="tableCss">
+
+    <ng-content select="[header]">
+
+    </ng-content>
+
+    <tbody *ngIf="loading || !hasRecords">
+      <tr>
+        <th [attr.colspan]="columns" class="text-center">
+          <h4>{{ loading ? 'Loading...' : 'No Records'}}</h4>
+        </th>
+      </tr>
+    </tbody>
+
+    <ng-content select="[body]" *ngIf="!loading && hasRecords">
+
+    </ng-content>
+
+    <tfoot *ngIf="paged != null && hasRecords && showPager">
+      <tr>
+        <td class="border-0" [attr.colspan]="columns">
+          <div class="d-flex justify-content-between">
+            <pagination class="pagination pagination-md" *ngIf="paged.count > paged.size" [totalItems]="paged.count"
+              [itemsPerPage]="paged.size" [(ngModel)]="currentPage" previousText="&lsaquo;" nextText="&rsaquo;"
+              firstText="&laquo;" lastText="&raquo;" (pageChanged)="pagerChange($event.page, $event.itemsPerPage)"
+              [maxSize]="5" [boundaryLinks]="true" [rotate]="true">
+            </pagination>
+            <div class="text-end text-right">
+              {{ paged | paginationSummary }}
+              <ng-container *ngTemplateOutlet="pageSizesTmpl"></ng-container>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<ng-template #pageSizesTmpl>
+  <div class="mt-1" *ngIf="showSizes && paged.count > paged.size">
+    <select class="form-select form-select-sm form-control-sm" [(ngModel)]="paged.size"
+      (ngModelChange)="pagerChange(1, $event)">
+      <option *ngFor="let option of pageSizes" [value]="option">
+        {{ option }} Item Per Page
+      </option>
+    </select>
+  </div>
+</ng-template>
