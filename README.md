@@ -13,7 +13,9 @@ This library contains common Angular components, models, directives, and utiliti
 ## @outerlimitstech/ngx-bootstrap 
 ### ngx-bootstrap Extension/Wrapper Library
 
-The primary goal of this library is to create application components that utilize ngx-bootstrap to "fix" issues with Date/Time an
+The primary goal of this library is to create application components that utilize ngx-bootstrap 
+
+_The Date and Date/Time Picker is a simple wrapper around the bsDatepicker directive to set the time to midnight UTC.  We had issues where the date would shift a day if the time UTC was within the offset range of the next day when posting data to the server._
 
 [![npm version](https://img.shields.io/npm/v/@outerlimitstech/ngx-bootstrap/latest.svg)](https://www.npmjs.com/package/@outerlimitstech/ngx-bootstrap)
 
