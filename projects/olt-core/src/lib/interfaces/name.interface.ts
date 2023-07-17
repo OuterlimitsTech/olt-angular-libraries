@@ -1,3 +1,6 @@
+/**
+ * @deprecated Move to IPersonName
+ */
 export interface IName {
     prefix?: string;
     first?: string;
@@ -6,6 +9,9 @@ export interface IName {
     suffix?: string;
 }
 
+/**
+ * @deprecated Move to IPersonName
+ */
 export interface IFullName {
     namePrefix?: string;
     firstName?: string;
