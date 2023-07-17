@@ -16,8 +16,8 @@ import { OltUtility } from '@olt-core';
 })
 export class DateTimePickerComponent implements ControlValueAccessor, Validator  {
   @Input() placeholder: string | null = "mm/dd/yyyy";
-  @Input() min: Date = new Date('0001-01-01T00:00:00Z');
-  @Input() max: Date = new Date('9999-12-31T23:59:59Z'); 
+  @Input() minDate: Date = new Date('0001-01-01T00:00:00Z');
+  @Input() maxDate: Date = new Date('9999-12-31T23:59:59Z'); 
 
   
   dateValue: Date | any | null = null;  
@@ -75,24 +75,24 @@ export class DateTimePickerComponent implements ControlValueAccessor, Validator 
 
 
     if (this.dateValue != null) {
-      const maxTime = this.max?.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-      const minTime = this.min?.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      const maxTime = this.maxDate?.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      const minTime = this.minDate?.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 
       
-      if (this.dateValue < this.min) {
+      if (this.dateValue < this.minDate) {
 
-        if (new Date(this.dateValue.toLocaleDateString()) == new Date(this.min.toLocaleDateString())){
+        if (new Date(this.dateValue.toLocaleDateString()) == new Date(this.minDate.toLocaleDateString())){
           return { minDateTime : { valid: false, message: `Time is before ${minTime}` } };
         } else{
-          return { minDateTime : { valid: false, message: `Date/Time is before ${this.min?.toLocaleDateString()} ${minTime}` } };
+          return { minDateTime : { valid: false, message: `Date/Time is before ${this.minDate?.toLocaleDateString()} ${minTime}` } };
         }      
 
-      } else if (this.dateValue > this.max) {
+      } else if (this.dateValue > this.maxDate) {
 
-        if (new Date(this.dateValue.toLocaleDateString()) == new Date(this.max.toLocaleDateString())){
+        if (new Date(this.dateValue.toLocaleDateString()) == new Date(this.maxDate.toLocaleDateString())){
           return { minDateTime : { valid: false, message: `Time is after ${maxTime}` } };
         } else{
-          return { minDateTime : { valid: false, message: `Date/Time is after ${this.max?.toLocaleDateString()} ${maxTime}` } };
+          return { minDateTime : { valid: false, message: `Date/Time is after ${this.maxDate?.toLocaleDateString()} ${maxTime}` } };
         }    
 
       }
@@ -107,12 +107,12 @@ export class DateTimePickerComponent implements ControlValueAccessor, Validator 
     } 
     
     if (invalidTime) {
-      return { invalidTime: { valid: false, message: 'Invalid Time' } };    }
+      return { invalidTime: { valid: false, message: 'Invalid Time' } };    
+    }
     
-
-
     return null;
   }
+
   registerOnValidatorChange?(fn: () => void): void {
     this.onValidatorChange = fn;
   }

@@ -1,5 +1,5 @@
 <div class="input-group">
-    <input type="text" class="form-control" #datePicker="bsDatepicker" bsDatepicker placeholder="mm/dd/yyyy"  aria-label="date" aria-describedby="date"  [minDate]="min" [maxDate]="max"
+    <input type="text" class="form-control" #datePicker="bsDatepicker" bsDatepicker [placeholder]="placeholder"  aria-label="date" aria-describedby="date" [minDate]="minDate" [maxDate]="maxDate"
         [disabled]="disabled" [(ngModel)]="value" (ngModelChange)="modelChanged($event)" (blur)="onTouched()">
     <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" (click)="datePicker.toggle()">
