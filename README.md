@@ -15,5 +15,8 @@ This library contains common Angular components, models, directives, and utiliti
 
 The primary goal of this library is create application components that utilizes ngx-bootstrap to "fix" issues with Date/Time an
 
+[![npm version](https://img.shields.io/npm/v/@outerlimitstech/ngx-bootstrap/latest.svg)](https://www.npmjs.com/package/@outerlimitstech/ngx-bootstrap)
+
+
 [Library ReadMe](./projects/olt-ngx-bootstrap)
 
