@@ -22,5 +22,7 @@ export * from './modal-input.interface';
 export * from './modal.interface';
 export * from './name.interface';
 export * from './nav-link-tab.interface';
+export * from './paged-search.interface';
 export * from './paged.interface';
 export * from './pager-change-event.interface';
+export * from './person-name.interface';

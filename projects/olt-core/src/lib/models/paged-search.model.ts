@@ -1,6 +1,7 @@
+import { IPagedSearch } from '../interfaces/paged-search.interface';
 import { Paged } from './paged.model';
 
-export class PagedSearch<T, C> extends Paged<T> {
+export class PagedSearch<T, C> extends Paged<T> implements IPagedSearch<T, C> {
     key!: string;
     criteria!: C;
 

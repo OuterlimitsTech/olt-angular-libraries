@@ -11,7 +11,10 @@
     "access": "public"
   },
   "keywords": [
-    "angular"
+    "angular",
+    "bootstrap",
+    "ngx-bootstrap",
+    "valor-software"
   ],  
   "peerDependencies": {
     "@angular/common": ">=15.0.0",
