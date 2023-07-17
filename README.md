@@ -13,7 +13,7 @@ This library contains common Angular components, models, directives, and utiliti
 ## @outerlimitstech/ngx-bootstrap 
 ### ngx-bootstrap Extension/Wrapper Library
 
-The primary goal of this library is create application components that utilizes ngx-bootstrap to "fix" issues with Date/Time an
+The primary goal of this library is to create application components that utilize ngx-bootstrap to "fix" issues with Date/Time an
 
 [![npm version](https://img.shields.io/npm/v/@outerlimitstech/ngx-bootstrap/latest.svg)](https://www.npmjs.com/package/@outerlimitstech/ngx-bootstrap)
 
