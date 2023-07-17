@@ -8,7 +8,7 @@ import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker
 import { OltNgxDatePickerModule } from '@olt-ngx-bootstrap/date-picker';
 import { OltNgxDateTimePickerModule } from '@olt-ngx-bootstrap/date-time-picker';
 
-import { OltCoreModule } from '@olt-core';
+import { OltCoreModule } from '@outerlimitstech/ngx-app-core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

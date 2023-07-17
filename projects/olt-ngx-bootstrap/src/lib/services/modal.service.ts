@@ -4,7 +4,7 @@ import { BsModalService, ModalOptions, BsModalRef } from 'ngx-bootstrap/modal';
 import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
 import { AlertModalComponent } from '../modals/alert-modal/alert-modal.component';
 import { InputModalComponent } from '../modals/input-modal/input-modal.component';
-import { IAlertModal, IConfirmModal, IInputModal, IModalComponent, InputModalResponse, ModalResult, ModalSizeEnum, OltUtility } from '@olt-core';
+import { IAlertModal, IConfirmModal, IInputModal, IModalComponent, InputModalResponse, ModalResult, ModalSizeEnum, OltUtility } from '@outerlimitstech/ngx-app-core';
 
 @Injectable()
 export class OltModalService {

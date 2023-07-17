@@ -1,5 +1,5 @@
 import { Component, EventEmitter, ElementRef, Output, Input, SimpleChanges, OnChanges } from '@angular/core';
-import { IPaged, IPagerChangeEvent, PagerChangeEvent } from '@olt-core';
+import { IPaged, IPagerChangeEvent, PagerChangeEvent } from '@outerlimitstech/ngx-app-core';
 import { timer } from 'rxjs';
 
 @Component({

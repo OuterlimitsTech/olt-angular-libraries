@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
-import { OltUtility } from '@olt-core';
+import { OltUtility } from '@outerlimitstech/ngx-app-core';
 
 @Component({
   selector: 'olt-ngx-datetime-picker, [formGroupName] olt-ngx-datetime-picker, [formGroup] olt-ngx-datetime-picker',

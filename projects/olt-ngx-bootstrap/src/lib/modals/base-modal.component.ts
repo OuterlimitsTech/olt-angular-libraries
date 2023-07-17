@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IModal, ModalTypeEnum } from '@olt-core';
+import { IModal, ModalTypeEnum } from '@outerlimitstech/ngx-app-core';
 
 @Component({
     template: ''
