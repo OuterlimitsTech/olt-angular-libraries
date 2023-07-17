@@ -7,8 +7,8 @@ This library contains common Angular components, models, directives, and utiliti
 
 [![npm version](https://img.shields.io/npm/v/@outerlimitstech/ngx-app-core/latest.svg)](https://www.npmjs.com/package/@outerlimitstech/ngx-app-core)
 
+[![README.md](https://img.shields.io/badge/README.md-yes-brightgreen)](./projects/olt-core)
 
-[Library ReadMe](./projects/olt-core)
 
 ## @outerlimitstech/ngx-bootstrap 
 ### ngx-bootstrap Extension/Wrapper Library
@@ -17,6 +17,5 @@ The primary goal of this library is create application components that utilizes 
 
 [![npm version](https://img.shields.io/npm/v/@outerlimitstech/ngx-bootstrap/latest.svg)](https://www.npmjs.com/package/@outerlimitstech/ngx-bootstrap)
 
-
-[Library ReadMe](./projects/olt-ngx-bootstrap)
+[![README.md](https://img.shields.io/badge/README.md-yes-brightgreen)](./projects/olt-ngx-bootstrap)
 
