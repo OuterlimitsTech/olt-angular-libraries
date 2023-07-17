@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { OltUtility } from '@olt-core';
+import { OltUtility } from '@outerlimitstech/ngx-app-core';
 
 @Component({
   templateUrl: './date-time-picker.component.html',

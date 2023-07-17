@@ -2,7 +2,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { BaseModalComponent } from '../base-modal.component';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { OltUtility, InputModal, InputModalResponse } from '@olt-core';
+import { OltUtility, InputModal, InputModalResponse } from '@outerlimitstech/ngx-app-core';
 
 
 @Component({
