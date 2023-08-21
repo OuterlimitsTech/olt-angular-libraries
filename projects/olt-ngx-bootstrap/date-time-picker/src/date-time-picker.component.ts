@@ -32,7 +32,8 @@ export class DateTimePickerComponent implements ControlValueAccessor, Validator 
 
 
   writeValue(value: Date | null): void {    
-    console.log('writeValue', value, value?.toLocaleTimeString());
+    value = value ?? null; //Make sure it's not undefined
+    // console.log('writeValue', value);
     this._timeValue = value;
     this.dateValue = value;
     this.timeValue = value;
@@ -71,7 +72,7 @@ export class DateTimePickerComponent implements ControlValueAccessor, Validator 
   }
 
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    console.log('validate',  this.dateValue, control);
+    // console.log('validate',  this.dateValue, control);
 
 
     if (this.dateValue != null) {
