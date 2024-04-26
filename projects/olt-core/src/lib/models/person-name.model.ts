@@ -1,4 +1,5 @@
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { IPersonName } from '../interfaces/person-name.interface';
 
 export interface IPersonNameForm {
   first: FormControl<string | null>;
@@ -7,13 +8,6 @@ export interface IPersonNameForm {
   suffix: FormControl<string | null>;
 }
 
-export interface IPersonName {
-  prefix?: string;
-  first?: string;
-  middle?: string;
-  last?: string;
-  suffix?: string;
-}
 
 export class PersonName implements IPersonName {
   prefix?: string;

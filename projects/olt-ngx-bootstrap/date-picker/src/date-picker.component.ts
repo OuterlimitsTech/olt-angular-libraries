@@ -14,8 +14,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]  
 })
 export class DatePickerComponent  implements ControlValueAccessor {
-  @Input() min: Date = new Date('0001-01-01T00:00:00Z');
-  @Input() max: Date = new Date('9999-12-31T23:59:59Z');
+  @Input() placeholder: string | null = "mm/dd/yyyy";
+  @Input() minDate: Date = new Date('0001-01-01T00:00:00Z');
+  @Input() maxDate: Date = new Date('9999-12-31T23:59:59Z');
   
   value: Date | any | null = null;
   

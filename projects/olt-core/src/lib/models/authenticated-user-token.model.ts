@@ -3,13 +3,22 @@ import { PersonName } from './person-name.model';
 export class AuthenticatedUser {
   userPrincipalName!: string;
   name!: PersonName;
+
+  tokenType!: string;
+  /**
+  * @deprecated Move to tokenType
+  */
   authenticationType!: string;
+
   token!: string;
   issued!: string;
   expires!: string;
   expiresIn!: string;
   roles!: string[];
   permissions!: string[];
+  /**
+  * @deprecated No longer used
+  */  
   otherClaims?: any;
   username!: string;
   email!: string;
@@ -46,7 +55,8 @@ export class AuthenticatedUser {
 
   constructor(data?: any) {
     this.userPrincipalName = data?.userPrincipalName;
-    this.authenticationType = data?.authenticationType || data?.token_type || 'Bearer';
+    this.authenticationType = data?.authenticationType || data?.tokenType || data?.token_type || 'Bearer';
+    this.tokenType = data?.tokenType || data?.token_type || data?.authenticationType || 'Bearer';
     this.token = data?.token || data?.access_token;
     this.issued = data?.issued;
     this.expires = data?.expires;

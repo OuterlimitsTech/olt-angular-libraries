@@ -1,7 +1,30 @@
-import { ElementRef, forwardRef, Directive, HostListener } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { OltUtility } from '../utilities/utility';
+import { ElementRef, Directive, HostListener, EventEmitter, Output } from '@angular/core';
 
+// https://dev.to/dilika/restrict-angular-input-to-number-only-4o4k
+
+@Directive({
+    selector: 'input[oltIntEntry]'
+})
+export class IntEntryDirective {
+
+    @Output() valueChange = new EventEmitter()
+
+    constructor(private elementRef: ElementRef) {
+    }
+
+    @HostListener('input', ['$event']) onInputChange(event: any) {
+        const initalValue = this.elementRef.nativeElement.value;
+        const newValue = initalValue.replace(/[^0-9]*/g, '');
+        this.elementRef.nativeElement.value = newValue;
+        this.valueChange.emit(newValue);
+        if (initalValue !== this.elementRef.nativeElement.value) {
+            event.stopPropagation();
+        }
+    }
+
+}
+
+/* Old Directive
 const noop = () => { };
 
 const clean = (value: string | null) => {
@@ -78,3 +101,4 @@ export class IntEntryDirective {
     this.disabled = isDisabled;
   }
 }
+*/

@@ -1,5 +1,6 @@
 export * from './address.interface';
 export * from './api-param.interface';
+export * from './app-settings';
 export * from './auth-service.interface';
 export * from './broadcast-message.interface';
 export * from './cache-content.interface';
@@ -22,5 +23,7 @@ export * from './modal-input.interface';
 export * from './modal.interface';
 export * from './name.interface';
 export * from './nav-link-tab.interface';
+export * from './paged-search.interface';
 export * from './paged.interface';
 export * from './pager-change-event.interface';
+export * from './person-name.interface';
