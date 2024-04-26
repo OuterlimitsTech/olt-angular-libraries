@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { OltHelperService } from "@outerlimitstech/ngx-app-core";
 import { BehaviorSubject, Observable, catchError, map, of } from "rxjs";
 import { IOltAppSettingResult } from "../interfaces/app-settings";
+import { OltHelperService } from "./helper.service";
 
 
 export abstract class OltAppSettingsServiceBase<T> {  
