@@ -132,12 +132,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "test-app:build:production",
-              "port": 5632
+              "port": 5632,
+              "buildTarget": "test-app:build:production"
             },
             "development": {
-              "browserTarget": "test-app:build:development",
-              "port": 5633
+              "port": 5633,
+              "buildTarget": "test-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -145,7 +145,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "test-app:build"
+            "buildTarget": "test-app:build"
           }
         },
         "test": {
