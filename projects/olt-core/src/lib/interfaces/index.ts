@@ -1,5 +1,6 @@
 export * from './address.interface';
 export * from './api-param.interface';
+export * from './app-settings';
 export * from './auth-service.interface';
 export * from './broadcast-message.interface';
 export * from './cache-content.interface';

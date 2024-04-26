@@ -1,6 +1,6 @@
 {
   "name": "@outerlimitstech/ngx-bootstrap",
-  "version": "15.1.2",
+  "version": "15.1.6",
   "description": "Components that utilize ngx-bootstrap for OuterLimits Technologies applications",
   "bugs": "https://github.com/OuterlimitsTech/olt-angular-libraries/issues",
   "homepage": "https://github.com/OuterlimitsTech/olt-angular-libraries#readme",

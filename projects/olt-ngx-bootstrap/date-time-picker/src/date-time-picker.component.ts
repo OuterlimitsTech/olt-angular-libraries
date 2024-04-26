@@ -1,5 +1,5 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { OltUtility } from '@outerlimitstech/ngx-app-core';
 
 @Component({
@@ -11,7 +11,12 @@ import { OltUtility } from '@outerlimitstech/ngx-app-core';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DateTimePickerComponent),
       multi: true
-    }
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => DateTimePickerComponent),
+      multi: true,
+    }     
   ]  
 })
 export class DateTimePickerComponent implements ControlValueAccessor, Validator  {
