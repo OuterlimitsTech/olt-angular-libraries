@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { OltAuthServiceBase } from '../services/auth.service';
 import { OltConfigServiceBase } from '../services/config.service';
@@ -8,7 +8,7 @@ import { OltConfigServiceBase } from '../services/config.service';
 @Injectable({
   providedIn: 'root'
 })
-export class OltAuthGuard implements CanActivate {
+export class OltAuthGuard  {
   constructor(
     private authenticationService: OltAuthServiceBase,
     private configService: OltConfigServiceBase,
