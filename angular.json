@@ -79,14 +79,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": [
               "error-stack-parser"
             ],            
-            "outputPath": "dist/test-app",
+            "outputPath": {
+              "base": "dist/test-app"
+            },
             "index": "projects/test-app/src/index.html",
-            "main": "projects/test-app/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -99,7 +100,8 @@
             "styles": [
               "projects/test-app/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/test-app/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -118,9 +120,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
