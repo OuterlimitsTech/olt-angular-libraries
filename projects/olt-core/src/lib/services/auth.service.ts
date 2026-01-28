@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IOltAuthService } from '../interfaces/auth-service.interface';
 
+/**
+ * @deprecated No longer manintained
+ */
 @Injectable({
   providedIn: 'root'
 })

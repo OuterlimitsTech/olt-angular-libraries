@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, inject } from '@angular/core';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -7,96 +7,96 @@ import * as StackTraceParser from 'error-stack-parser';
 import { OltAuthServiceBase } from './auth.service';
 import { OltConfigServiceBase } from './config.service';
 import { OltHelperService } from './helper.service';
-import { IGrowlMessage } from '../interfaces/growl-message.interface';
-
+import { Observable, from } from 'rxjs';
 
 export interface IOltError {
-  name: string;
+  name: string | null;
   appId: string;
   user: string;
   time: number;
   id: string;
   url: string;
-  status: string;
+  status: string | null;
   message: string;
-  stack: string | StackTraceParser.StackFrame[] | null;
+  stack: StackTraceParser.StackFrame[] | null;
 }
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OltErrorService {
+  private readonly authService = inject(OltAuthServiceBase);
+  private readonly configService = inject(OltConfigServiceBase);
+  private readonly helperService = inject(OltHelperService);
+  private readonly location = inject(LocationStrategy);
+  private readonly router = inject(Router);
+  private readonly zone = inject(NgZone);
+  private readonly logger = inject(NGXLogger);
 
-  constructor(
-    protected authService: OltAuthServiceBase,
-    protected configService: OltConfigServiceBase,
-    protected helperService: OltHelperService,
-    protected location: LocationStrategy,
-    protected router: Router,
-    protected zone: NgZone,
-    protected logger: NGXLogger
-  ) { }
+  log(error: unknown, isApiError: boolean, showMessage = true): Observable<void> {
+    const errorWithContext = this.addContextInfo(error);
+    const growlMessage = { title: 'Error Occurred', message: errorWithContext.message };
 
-  log(error: any, navigateToErrorPage: boolean, showMessage?: boolean): void {
-    const errorToSend = this.addContextInfo(error);
+    // Update logger configuration
     const config = this.logger.getConfigSnapshot();
-    const growlMessage: IGrowlMessage = { title: 'Error Occurred', message: errorToSend.message };
-
     config.serverLoggingUrl = this.configService.serverLoggingUrl;
 
-    if (this.authService.isAuthenticated && this.authService.token != null) {
-      const tokenType = this.authService.tokenType || 'Bearer';
-      config.customHttpHeaders = new HttpHeaders({ Authorization: `${tokenType} ${this.authService.token}` });
+    if (this.authService.isAuthenticated && this.authService.token) {
+      config.customHttpHeaders = new HttpHeaders({
+        Authorization: `${this.authService.tokenType ?? 'Bearer'} ${this.authService.token}`,
+      });
     }
     this.logger.updateConfig(config);
 
-    if (error instanceof HttpErrorResponse) {
-      growlMessage.message = 'API ERROR';
-      // Server or connection error happened
-      if (!navigator.onLine) {
-        growlMessage.message = `<h4>No Internet Connection</h4>`;
-      } else {
-        this.logger.fatal(errorToSend.message, [errorToSend]);
-      }
+    // Handle error logging
+    if (isApiError && error instanceof HttpErrorResponse) {
+      growlMessage.message = !navigator.onLine ? '<h4>No Internet Connection</h4>' : 'API ERROR';
+      this.logger.fatal(growlMessage.message, [errorWithContext]);
     } else {
-      if (this.configService.isProduction !== true) {
-        this.logger.trace(errorToSend.message, [errorToSend]);
-      } else {
-        this.logger.error(errorToSend.message, [errorToSend]);
-      }
-      growlMessage.message = `<h4>${errorToSend.message}</h4>`;
+      const logMethod = this.configService.isProduction ? this.logger.error : this.logger.trace;
+      logMethod.call(this.logger, errorWithContext.message, [errorWithContext]);
+      growlMessage.message = `<h4>${errorWithContext.message}</h4>`;
     }
 
-    if (showMessage === true || this.configService.isProduction !== true) {
-      this.helperService.growlErrorMessage(growlMessage.message, growlMessage.title, { enableHtml: true, timeOut: 4000, closeButton: true });
+    // Show growl message if enabled or in non-production
+    if (showMessage || !this.configService.isProduction) {
+      this.helperService.growlErrorMessage(growlMessage.message, growlMessage.title, {
+        enableHtml: true,
+        timeOut: 4000,
+        closeButton: true,
+      });
     }
 
-    if (this.configService.isProduction === true) {
-      this.navigate('/application-error', navigateToErrorPage);
+    // Navigate to error page in production
+    if (this.configService.isProduction) {
+      return this.navigate('/application-error');
     }
+
+    return from([]);
   }
 
-  navigate(url: string, navigateToErrorPage: boolean): void {
-    if (navigateToErrorPage === true) {
-      this.zone.run(() => this.router.navigate([url]).then(() => window.location.reload()));
-    }
+  private navigate(url: string): Observable<void> {
+    return new Observable((observer) => {
+      this.zone.run(() =>
+        this.router.navigate([url]).then(() => {
+          window.location.reload();
+          observer.complete();
+        })
+      );
+    });
   }
 
-  addContextInfo(error: any): IOltError {
-    const name = error.name || null;
+  private addContextInfo(error: unknown): IOltError {
+    const name = (error as Error)?.name ?? null;
     const appId = this.configService.applicationName;
-    const user = this.authService.isAuthenticated ? this.authService.username || 'unknown' : 'anonymous';
-    const time = new Date().getTime();
+    const user = this.authService.isAuthenticated ? this.authService.username ?? 'unknown' : 'anonymous';
+    const time = Date.now();
     const id = `${appId}-${user}-${time}`;
     const url = this.location instanceof PathLocationStrategy ? this.location.path() : '';
-    const status = error.status || null;
-    const message = error.message || error.toString();
-    const stack = error instanceof HttpErrorResponse ? null : StackTraceParser.parse(error);
+    const status = (error as HttpErrorResponse)?.status?.toString() ?? null;
+    const message = (error as Error)?.message ?? String(error);
+    const stack = error instanceof HttpErrorResponse ? null : StackTraceParser.parse(error as Error);
 
-    const errorWithContext: IOltError = { name, appId, user, time, id, url, status, message, stack };
-    return errorWithContext;
+    return { name, appId, user, time, id, url, status, message, stack };
   }
-
 }
-
