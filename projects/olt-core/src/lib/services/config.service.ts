@@ -1,6 +1,9 @@
 import { IOltConfigService } from '../interfaces/config-service.interface';
 import { UrlTree } from '@angular/router';
 
+/**
+ * @deprecated No longer manintained
+ */
 export abstract class OltConfigServiceBase implements IOltConfigService {
   abstract get applicationName(): string;
   abstract get applicationTitle(): string;

@@ -1,18 +1,16 @@
-import { ErrorHandler, Injectable, Injector } from '@angular/core';
+import { ErrorHandler, Injectable, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { OltErrorService } from '../services/error.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class OltGlobalErrorHandler implements ErrorHandler {
+  private readonly errorService = inject(OltErrorService);
 
-  private errorService!: OltErrorService;
-
-  constructor(private injector: Injector) { }
-
-  handleError(error: any): void {
-    console.error('OltGlobalErrorHandler', error);
-    this.errorService = this.injector.get<OltErrorService>(OltErrorService);
-    const apiError = error instanceof HttpErrorResponse;
-    this.errorService.log(error, apiError);
+  handleError(error: unknown): void {
+    console.error('OltGlobalErrorHandler:', error);
+    const isApiError = error instanceof HttpErrorResponse;
+    this.errorService.log(error, isApiError);
   }
 }

@@ -1,12 +1,85 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { OltAuthServiceBase } from '../services';
+import {
+  HttpInterceptor,
+  HttpHandler,
+  HttpEvent,
+  HttpRequest,
+  HttpErrorResponse,
+  HttpStatusCode,
+} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { OltAuthServiceBase } from '../services';
 import { OltConfigServiceBase } from '../services/config.service';
 
+// export type OltHttpConfigInterceptorHooks = Partial<{
+//   configureApiUrl: (req: HttpRequest<any>, cfg: OltConfigServiceBase) => HttpRequest<any>;
+//   configureBearer: (req: HttpRequest<any>, auth: OltAuthServiceBase) => HttpRequest<any>;
+//   configureCORS: (req: HttpRequest<any>) => HttpRequest<any>;
+// }>;
 
+// export function oltHttpConfigInterceptor(
+//   hooks: OltHttpConfigInterceptorHooks = {}
+// ): HttpInterceptorFn {
+//   return (request, next) => {
+//     const configService = inject(OltConfigServiceBase);
+//     const authService = inject(OltAuthServiceBase);
+//     const router = inject(Router);
 
+//     const configureApiUrl =
+//       hooks.configureApiUrl ??
+//       ((req, cfg) => req.clone({ url: cfg.apiUrl(req.url) }));
+
+//     const configureBearer =
+//       hooks.configureBearer ??
+//       ((req, auth) => {
+//         if (auth.isAuthenticated && auth.token != null) {
+//           const tokenType = auth.tokenType || 'Bearer';
+//           return req.clone({
+//             setHeaders: { Authorization: `${tokenType} ${auth.token}` },
+//           });
+//         }
+//         return req;
+//       });
+
+//     const configureCORS =
+//       hooks.configureCORS ??
+//       ((req) => {
+//         // Intentionally a no-op (same as your class version)
+//         // If you ever need this:
+//         // return req.clone({ setHeaders: { 'Access-Control-Allow-Origin': '*' } });
+//         return req;
+//       });
+
+//     request = configureBearer(request, authService);
+//     request = configureCORS(request);
+//     request = configureApiUrl(request, configService);
+
+//     return next(request).pipe(
+//       catchError((error: HttpErrorResponse) => {
+//         if (error.status === HttpStatusCode.Unauthorized) {
+//           if (configService.isProduction !== true) {
+//             console.error('Auth Error', error);
+//             return throwError(() => error);
+//           }
+
+//           if (authService.isAuthenticated) {
+//             router.navigateByUrl(configService.permissionDeniedRoute);
+//           } else {
+//             router.navigateByUrl(configService.accessDeniedRoute);
+//           }
+//         }
+
+//         return throwError(() => error);
+//       })
+//     );
+//   };
+// }
+
+/**
+ * @deprecated No longer manintained
+ */
 export abstract class OltHttpConfigInterceptor implements HttpInterceptor {
 
   constructor(

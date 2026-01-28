@@ -30,7 +30,9 @@ export abstract class OltBaseViewComponent implements OnDestroy {
   }
 
 
-
+  /**
+  * @deprecated No longer manintained
+  */
   subscribeTitleChange(router: Router, activatedRoute: ActivatedRoute, titleService: Title, configService: OltConfigServiceBase): void {
     router.events
       .pipe(

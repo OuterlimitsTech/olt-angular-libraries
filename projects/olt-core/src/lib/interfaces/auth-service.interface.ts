@@ -1,3 +1,6 @@
+/**
+ * @deprecated No longer manintained
+ */
 export interface IOltAuthService {
   readonly isAuthenticated: boolean;
   readonly tokenType: string | null | undefined;

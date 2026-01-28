@@ -5,6 +5,9 @@ import { OltAuthServiceBase } from '../services/auth.service';
 import { OltConfigServiceBase } from '../services/config.service';
 
 
+/**
+ * @deprecated No longer manintained
+ */
 @Injectable({
   providedIn: 'root'
 })
