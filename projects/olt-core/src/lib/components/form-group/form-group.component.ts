@@ -14,11 +14,13 @@ const guid = () => {
 };
 
 @Component({
-  // tslint:disable-next-line: component-selector
-  selector: 'olt-form-group, [formGroupName] olt-form-group, [formGroup] olt-form-group',
-  templateUrl: './form-group.component.html',
-  styleUrls: ['./form-group.component.scss']
-  // changeDetection: ChangeDetectionStrategy.Default
+    // tslint:disable-next-line: component-selector
+    selector: 'olt-form-group, [formGroupName] olt-form-group, [formGroup] olt-form-group',
+    templateUrl: './form-group.component.html',
+    styleUrls: ['./form-group.component.scss']
+    // changeDetection: ChangeDetectionStrategy.Default
+    ,
+    standalone: false
 })
 export class FormGroupComponent implements OnInit, AfterViewInit, AfterContentChecked, IFormGroupComponentValidationState {
   @Input()

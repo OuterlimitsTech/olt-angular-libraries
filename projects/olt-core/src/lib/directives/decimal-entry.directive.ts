@@ -10,14 +10,15 @@ const clean = (value: string | null) => {
 
 
 @Directive({
-  selector: '[oltDecimalEntry]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DecimalEntryDirective),
-      multi: true
-    }
-  ]
+    selector: '[oltDecimalEntry]',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DecimalEntryDirective),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class DecimalEntryDirective {
   private onTouchedCallback: () => void = noop;

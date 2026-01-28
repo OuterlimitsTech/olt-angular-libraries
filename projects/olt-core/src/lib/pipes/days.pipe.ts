@@ -4,7 +4,8 @@ import { OltUtility } from '../utilities';
 
 
 @Pipe({
-  name: 'days'
+    name: 'days',
+    standalone: false
 })
 export class DaysPipe implements PipeTransform {
 

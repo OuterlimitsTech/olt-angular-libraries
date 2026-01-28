@@ -9,7 +9,8 @@ import { Directive, Input, HostListener, ElementRef } from '@angular/core';
 
 
 @Directive({
-  selector: '[dateMaskInput]'
+    selector: '[dateMaskInput]',
+    standalone: false
 })
 export class DateMaskInputDirective {
 @Input() dateMaskValue: string | Date | null = null;

@@ -1,7 +1,8 @@
 import { Directive, HostListener, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, SimpleChange } from '@angular/core';
 
 @Directive({
-  selector: '[oltWorkingButton]'
+    selector: '[oltWorkingButton]',
+    standalone: false
 })
 export class WorkingButtonDirective implements OnChanges {
   @Input() oltWorkingButton = false;

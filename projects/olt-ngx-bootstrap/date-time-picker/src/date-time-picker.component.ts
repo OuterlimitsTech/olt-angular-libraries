@@ -3,21 +3,22 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
 import { OltUtility } from '@outerlimitstech/ngx-app-core';
 
 @Component({
-  selector: 'olt-ngx-datetime-picker, [formGroupName] olt-ngx-datetime-picker, [formGroup] olt-ngx-datetime-picker',
-  templateUrl: './date-time-picker.component.html',
-  styleUrls: ['./date-time-picker.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DateTimePickerComponent),
-      multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => DateTimePickerComponent),
-      multi: true,
-    }     
-  ]  
+    selector: 'olt-ngx-datetime-picker, [formGroupName] olt-ngx-datetime-picker, [formGroup] olt-ngx-datetime-picker',
+    templateUrl: './date-time-picker.component.html',
+    styleUrls: ['./date-time-picker.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DateTimePickerComponent),
+            multi: true
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => DateTimePickerComponent),
+            multi: true,
+        }
+    ],
+    standalone: false
 })
 export class DateTimePickerComponent implements ControlValueAccessor, Validator  {
   @Input() placeholder: string | null = "mm/dd/yyyy";

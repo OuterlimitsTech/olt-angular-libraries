@@ -3,9 +3,10 @@ import { IPaged, IPagerChangeEvent, PagerChangeEvent } from '@outerlimitstech/ng
 import { timer } from 'rxjs';
 
 @Component({
-  selector: 'olt-dynamic-table, olt-ngx-bootstrap-table',
-  templateUrl: './dynamic-table.component.html',
-  styleUrls: ['./dynamic-table.component.scss']
+    selector: 'olt-dynamic-table, olt-ngx-bootstrap-table',
+    templateUrl: './dynamic-table.component.html',
+    styleUrls: ['./dynamic-table.component.scss'],
+    standalone: false
 })
 export class DynamicTableComponent implements OnChanges {
   @Input() loading = false;

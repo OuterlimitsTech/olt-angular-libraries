@@ -4,7 +4,8 @@ import { OltUtility } from '../utilities';
 const ordinals: string[] = ['th', 'st', 'nd', 'rd'];
 
 @Pipe({
-  name: 'ordinal'
+    name: 'ordinal',
+    standalone: false
 })
 export class OrdinalPipe implements PipeTransform {
 

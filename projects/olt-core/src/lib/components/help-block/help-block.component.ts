@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'olt-help-block',
-  templateUrl: './help-block.component.html',
-  styleUrls: ['./help-block.component.scss']
+    selector: 'olt-help-block',
+    templateUrl: './help-block.component.html',
+    styleUrls: ['./help-block.component.scss'],
+    standalone: false
 })
 export class HelpBlockComponent {
   @Input() message!: string | null | undefined;

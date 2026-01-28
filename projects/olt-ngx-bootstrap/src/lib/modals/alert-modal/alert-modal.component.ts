@@ -4,8 +4,9 @@ import { AlertModal } from '@outerlimitstech/ngx-app-core';
 import { BaseModalComponent } from '../base-modal.component';
 
 @Component({
-  templateUrl: './alert-modal.component.html',
-  styleUrls: ['./alert-modal.component.scss']
+    templateUrl: './alert-modal.component.html',
+    styleUrls: ['./alert-modal.component.scss'],
+    standalone: false
 })
 export class AlertModalComponent extends BaseModalComponent implements OnInit {
   settings!: AlertModal;

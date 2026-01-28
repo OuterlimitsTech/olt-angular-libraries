@@ -3,7 +3,8 @@ import { ControlContainer, UntypedFormGroup, FormGroupDirective, FormGroupName }
 import { OltBaseViewComponent } from './base-view.component';
 
 @Component({
-  template: ''
+    template: '',
+    standalone: false
 })
 export abstract class OltBaseFormGroupComponent extends OltBaseViewComponent {
 

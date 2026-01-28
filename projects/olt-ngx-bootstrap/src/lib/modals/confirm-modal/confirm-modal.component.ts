@@ -3,8 +3,9 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ConfirmModal, ModalTypeEnum } from '@outerlimitstech/ngx-app-core';
 
 @Component({
-  templateUrl: './confirm-modal.component.html',
-  styleUrls: ['./confirm-modal.component.scss']
+    templateUrl: './confirm-modal.component.html',
+    styleUrls: ['./confirm-modal.component.scss'],
+    standalone: false
 })
 export class ConfirmModalComponent implements OnInit {
   settings!: ConfirmModal;

@@ -3,7 +3,8 @@ import { Inject, Injectable, LOCALE_ID, Pipe, PipeTransform } from '@angular/cor
 
 
 @Pipe({
-  name: 'shortDate'
+    name: 'shortDate',
+    standalone: false
 })
 @Injectable({
   providedIn: 'root'

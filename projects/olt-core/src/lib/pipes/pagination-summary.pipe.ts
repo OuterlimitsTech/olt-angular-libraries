@@ -3,7 +3,8 @@ import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 import { IPaged } from '../interfaces/paged.interface';
 
 @Pipe({
-  name: 'paginationSummary'
+    name: 'paginationSummary',
+    standalone: false
 })
 export class PaginationSummaryPipe implements PipeTransform {
 

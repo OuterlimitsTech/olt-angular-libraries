@@ -2,9 +2,10 @@ import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { OltBaseFormGroupComponent } from '../../views/base-view.formGroup.component';
 
 @Component({
-  selector: 'olt-domestic-phone-entry, [formGroupName] olt-domestic-phone-entry, [formGroup] olt-domestic-phone-entry',
-  templateUrl: './domestic-phone-entry.component.html',
-  styleUrls: ['./domestic-phone-entry.component.scss']
+    selector: 'olt-domestic-phone-entry, [formGroupName] olt-domestic-phone-entry, [formGroup] olt-domestic-phone-entry',
+    templateUrl: './domestic-phone-entry.component.html',
+    styleUrls: ['./domestic-phone-entry.component.scss'],
+    standalone: false
 })
 export class DomesticPhoneEntryComponent extends OltBaseFormGroupComponent {
   @Input() label = 'Phone';

@@ -6,8 +6,9 @@ import { OltUtility, InputModal, InputModalResponse } from '@outerlimitstech/ngx
 
 
 @Component({
-  templateUrl: './input-modal.component.html',
-  styleUrls: ['./input-modal.component.scss']
+    templateUrl: './input-modal.component.html',
+    styleUrls: ['./input-modal.component.scss'],
+    standalone: false
 })
 export class InputModalComponent extends BaseModalComponent implements OnInit {
   entryForm: FormGroup = this.createForm();

@@ -2,8 +2,9 @@ import { Pipe, Injectable, PipeTransform } from '@angular/core';
 // https://github.com/VadimDez/ngx-filter-pipe/blob/master/src/app/shared/ngx-filter-pipe/ngx-filter.pipe.ts
 
 @Pipe({
-  name: 'filterBy',
-  pure: false
+    name: 'filterBy',
+    pure: false,
+    standalone: false
 })
 @Injectable({
   providedIn: 'root'

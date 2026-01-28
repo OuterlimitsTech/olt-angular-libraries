@@ -3,21 +3,22 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
 import { OltUtility } from '@outerlimitstech/ngx-app-core';
 
 @Component({
-  selector: 'olt-test-date-time-entry, [formGroupName] olt-test-date-time-entry, [formGroup] olt-test-date-time-entry',
-  templateUrl: './test-date-time-entry.component.html',
-  styleUrls: ['./test-date-time-entry.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TestDateTimeEntryComponent),
-      multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => TestDateTimeEntryComponent),
-      multi: true,
-    }   
-  ]
+    selector: 'olt-test-date-time-entry, [formGroupName] olt-test-date-time-entry, [formGroup] olt-test-date-time-entry',
+    templateUrl: './test-date-time-entry.component.html',
+    styleUrls: ['./test-date-time-entry.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => TestDateTimeEntryComponent),
+            multi: true
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => TestDateTimeEntryComponent),
+            multi: true,
+        }
+    ],
+    standalone: false
 })
 export class TestDateTimeEntryComponent implements ControlValueAccessor, Validator  {
   @Input() placeholder: string | null = "mm/dd/yyyy";

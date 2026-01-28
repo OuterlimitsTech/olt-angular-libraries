@@ -2,16 +2,17 @@ import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'olt-ngx-date-picker, [formGroupName] olt-ngx-date-picker, [formGroup] olt-ngx-date-picker',
-  templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DatePickerComponent),
-      multi: true
-    }
-  ]  
+    selector: 'olt-ngx-date-picker, [formGroupName] olt-ngx-date-picker, [formGroup] olt-ngx-date-picker',
+    templateUrl: './date-picker.component.html',
+    styleUrls: ['./date-picker.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DatePickerComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class DatePickerComponent  implements ControlValueAccessor {
   @Input() placeholder: string | null = "mm/dd/yyyy";

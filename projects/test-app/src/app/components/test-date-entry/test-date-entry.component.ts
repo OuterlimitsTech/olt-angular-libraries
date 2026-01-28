@@ -12,16 +12,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
 @Component({
-  selector: 'olt-test-date-entry, [formGroupName] olt-test-date-entry, [formGroup] olt-test-date-entry',
-  templateUrl: './test-date-entry.component.html',
-  styleUrls: ['./test-date-entry.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TestDateEntryComponent),
-      multi: true
-    }
-  ]
+    selector: 'olt-test-date-entry, [formGroupName] olt-test-date-entry, [formGroup] olt-test-date-entry',
+    templateUrl: './test-date-entry.component.html',
+    styleUrls: ['./test-date-entry.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => TestDateEntryComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class TestDateEntryComponent implements ControlValueAccessor  {
   // @Input() formControlName!: string;
