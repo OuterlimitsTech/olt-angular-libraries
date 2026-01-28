@@ -12,14 +12,15 @@ const clean = (value: string | null): string | null | undefined => {
 };
 
 @Directive({
-  selector: '[oltCanadaPostalcodeMask]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CanadaPostalcodeMaskDirective),
-      multi: true
-    }
-  ]
+    selector: '[oltCanadaPostalcodeMask]',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => CanadaPostalcodeMaskDirective),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class CanadaPostalcodeMaskDirective {
   private onTouchedCallback: () => void = noop;

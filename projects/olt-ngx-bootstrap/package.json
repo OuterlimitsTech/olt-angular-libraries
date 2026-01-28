@@ -1,6 +1,6 @@
 {
   "name": "@outerlimitstech/ngx-bootstrap",
-  "version": "18.0.0",
+  "version": "19.0.0",
   "description": "Components that utilize ngx-bootstrap for OuterLimits Technologies applications",
   "bugs": "https://github.com/OuterlimitsTech/olt-angular-libraries/issues",
   "homepage": "https://github.com/OuterlimitsTech/olt-angular-libraries#readme",
@@ -15,13 +15,13 @@
     "bootstrap",
     "ngx-bootstrap",
     "valor-software"
-  ],  
+  ],
   "peerDependencies": {
-    "@angular/common": ">=18.0.0",
-    "@angular/core": ">=18.0.0",
-    "@angular/forms": ">=18.0.0",
-    "ngx-bootstrap": ">=18.0.0",
-    "@outerlimitstech/ngx-app-core": ">=18.0.0"
+    "@angular/common": ">=19.0.0",
+    "@angular/core": ">=19.0.0",
+    "@angular/forms": ">=19.0.0",
+    "ngx-bootstrap": ">=19.0.0",
+    "@outerlimitstech/ngx-app-core": ">=19.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

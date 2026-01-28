@@ -3,7 +3,8 @@ declare let dayjs: any;
 
 
 @Pipe({
-  name: 'age'
+    name: 'age',
+    standalone: false
 })
 export class AgePipe implements PipeTransform {
 

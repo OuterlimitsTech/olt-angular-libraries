@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IModal, ModalTypeEnum } from '@outerlimitstech/ngx-app-core';
 
 @Component({
-    template: ''
+    template: '',
+    standalone: false
 })
 export class BaseModalComponent implements OnInit {
     settings!: IModal;

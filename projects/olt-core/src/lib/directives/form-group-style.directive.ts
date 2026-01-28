@@ -3,7 +3,8 @@ import { IFormGroupValidationState } from '../interfaces/form-group-validation-s
 import { FormGroupValidationState } from '../models/form-group-validation-state.model';
 
 @Directive({
-  selector: '[oltFormGroupClass]'
+    selector: '[oltFormGroupClass]',
+    standalone: false
 })
 export class FormGroupStyleDirective {
   @Input() oltFormGroupClass!: IFormGroupValidationState;

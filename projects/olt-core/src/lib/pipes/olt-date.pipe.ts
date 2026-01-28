@@ -2,7 +2,8 @@ import { Pipe, PipeTransform, Injectable, LOCALE_ID, Inject } from '@angular/cor
 import { DatePipe } from '@angular/common';
 
 @Pipe({
-  name: 'oltDate'
+    name: 'oltDate',
+    standalone: false
 })
 @Injectable({
   providedIn: 'root'

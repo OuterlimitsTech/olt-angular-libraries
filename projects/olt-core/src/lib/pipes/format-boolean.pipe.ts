@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'formatBoolean'
+    name: 'formatBoolean',
+    standalone: false
 })
 export class FormatBooleanPipe implements PipeTransform {
   transform(value: any, trueValue: string | null = 'Yes', falseValue: string | null = 'No', unknownValue: string | null = 'N/A'): string | null {

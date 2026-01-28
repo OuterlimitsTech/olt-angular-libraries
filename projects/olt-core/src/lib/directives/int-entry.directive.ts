@@ -3,7 +3,8 @@ import { ElementRef, Directive, HostListener, EventEmitter, Output } from '@angu
 // https://dev.to/dilika/restrict-angular-input-to-number-only-4o4k
 
 @Directive({
-    selector: 'input[oltIntEntry]'
+    selector: 'input[oltIntEntry]',
+    standalone: false
 })
 export class IntEntryDirective {
 

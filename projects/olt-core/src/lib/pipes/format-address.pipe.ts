@@ -4,7 +4,8 @@ import { IAddress } from '../interfaces/address.interface';
 
 
 @Pipe({
-  name: 'formatAddress'
+    name: 'formatAddress',
+    standalone: false
 })
 export class FormatAddressPipe implements PipeTransform {
 

@@ -21,14 +21,15 @@ const clean = (value: string | null): string | null | undefined => {
 };
 
 @Directive({
-  selector: '[oltPhoneMask]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => PhoneMaskDirective),
-      multi: true
-    }
-  ]
+    selector: '[oltPhoneMask]',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => PhoneMaskDirective),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class PhoneMaskDirective {
   private onTouchedCallback: () => void = noop;

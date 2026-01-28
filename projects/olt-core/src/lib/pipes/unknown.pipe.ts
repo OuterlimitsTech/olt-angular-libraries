@@ -2,7 +2,8 @@ import { OltUtility } from './../utilities/utility';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'unknown'
+    name: 'unknown',
+    standalone: false
 })
 export class UnknownPipe implements PipeTransform {
 

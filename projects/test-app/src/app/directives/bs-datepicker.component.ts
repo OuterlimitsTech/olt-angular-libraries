@@ -12,8 +12,9 @@ import {
 import { BsDatepickerDirective } from "ngx-bootstrap/datepicker";
 
 @Directive({
-  selector: '[oltDatepicker]',
-  exportAs: 'oltDatepicker'
+    selector: '[oltDatepicker]',
+    exportAs: 'oltDatepicker',
+    standalone: false
 })
 export class OltBsDatepickerDirective extends BsDatepickerDirective {
 
@@ -21,7 +22,8 @@ export class OltBsDatepickerDirective extends BsDatepickerDirective {
 
 
 @Directive({
-  selector: `input[oltDatepicker]`,
+    selector: `input[oltDatepicker]`,
+    standalone: false
 })
 export class OltNgxBsDatepickerInputDirective extends BsDatepickerInputDirective {
 @Input() dateMaskValue: string | Date | null = null;

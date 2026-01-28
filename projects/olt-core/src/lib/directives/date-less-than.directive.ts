@@ -5,9 +5,10 @@ import { OltUtility } from '../utilities/utility';
 declare let dayjs: any;
 
 @Directive({
-  // tslint:disable-next-line: directive-selector
-  selector: '[oltDateLessThan]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: DateLessThanDirective, multi: true }]
+    // tslint:disable-next-line: directive-selector
+    selector: '[oltDateLessThan]',
+    providers: [{ provide: NG_VALIDATORS, useExisting: DateLessThanDirective, multi: true }],
+    standalone: false
 })
 export class DateLessThanDirective implements Validator {
   @Input('oltDateLessThan') fromControl!: AbstractControl;

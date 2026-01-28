@@ -3,9 +3,10 @@ import { IFormGroupValidationState } from '../../interfaces/form-group-validatio
 import { FormGroupValidationState } from '../../models/form-group-validation-state.model';
 
 @Component({
-  selector: 'olt-control-label',
-  templateUrl: './control-label.component.html',
-  styleUrls: ['./control-label.component.scss']
+    selector: 'olt-control-label',
+    templateUrl: './control-label.component.html',
+    styleUrls: ['./control-label.component.scss'],
+    standalone: false
 })
 export class ControlLabelComponent {
   @Input() srOnly = false;

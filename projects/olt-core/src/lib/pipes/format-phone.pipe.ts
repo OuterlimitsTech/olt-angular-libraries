@@ -3,7 +3,8 @@ import { IDomesticPhone } from '../interfaces';
 import { OltUtility } from '../utilities/utility';
 
 @Pipe({
-  name: 'formatPhone'
+    name: 'formatPhone',
+    standalone: false
 })
 export class FormatPhonePipe implements PipeTransform {
 

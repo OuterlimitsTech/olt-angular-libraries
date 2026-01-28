@@ -14,14 +14,15 @@ const clean = (value: string | null): string | null | undefined => {
 
 
 @Directive({
-  selector: '[oltZipcodeMask]',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ZipcodeMaskDirective),
-      multi: true
-    }
-  ]
+    selector: '[oltZipcodeMask]',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => ZipcodeMaskDirective),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class ZipcodeMaskDirective {
   private onTouchedCallback: () => void = noop;

@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { FormatBooleanPipe } from './format-boolean.pipe';
 
 @Pipe({
-  name: 'yesNo'
+    name: 'yesNo',
+    standalone: false
 })
 export class YesNoPipe extends FormatBooleanPipe implements PipeTransform {
   transform(value: any): string | null {

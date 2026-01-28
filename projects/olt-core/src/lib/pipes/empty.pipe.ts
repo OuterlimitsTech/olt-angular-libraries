@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { UnknownPipe } from './unknown.pipe';
 
 @Pipe({
-  name: 'empty'
+    name: 'empty',
+    standalone: false
 })
 export class EmptyPipe implements PipeTransform {
 

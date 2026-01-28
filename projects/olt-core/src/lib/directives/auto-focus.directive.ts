@@ -3,8 +3,9 @@ import { Directive, Input, ElementRef, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
-  // tslint:disable-next-line: directive-selector
-  selector: '[oltAutoFocus], [autofocus]'
+    // tslint:disable-next-line: directive-selector
+    selector: '[oltAutoFocus], [autofocus]',
+    standalone: false
 })
 export class AutoFocusDirective implements OnInit {
   private host: HTMLElement;

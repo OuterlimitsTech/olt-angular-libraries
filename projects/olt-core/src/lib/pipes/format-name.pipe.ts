@@ -4,7 +4,8 @@ import { FormatNameTypeEnum } from '../enums/format-name-type.enum';
 import { IFullName, IName } from '../interfaces/name.interface';
 
 @Pipe({
-  name: 'formatName'
+    name: 'formatName',
+    standalone: false
 })
 export class FormatNamePipe implements PipeTransform {
 

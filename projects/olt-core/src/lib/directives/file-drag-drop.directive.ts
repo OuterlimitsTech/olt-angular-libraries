@@ -8,7 +8,8 @@ import {
 
 
 @Directive({
-    selector: '[oltFileDragDrop]'
+    selector: '[oltFileDragDrop]',
+    standalone: false
 })
 export class FileDragDropDirective {
     @Output() filesDropped = new EventEmitter<FileList>();

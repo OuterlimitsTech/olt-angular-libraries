@@ -8,7 +8,8 @@ import { OltConfigServiceBase } from '../services/config.service';
 import { OltUtility } from '../utilities/utility';
 
 @Component({
-  template: ''
+    template: '',
+    standalone: false
 })
 export abstract class OltBaseViewComponent implements OnDestroy {
 

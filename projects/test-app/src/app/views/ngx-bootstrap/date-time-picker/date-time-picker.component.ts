@@ -3,8 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OltUtility } from '@outerlimitstech/ngx-app-core';
 
 @Component({
-  templateUrl: './date-time-picker.component.html',
-  styleUrls: ['./date-time-picker.component.scss'],  
+    templateUrl: './date-time-picker.component.html',
+    styleUrls: ['./date-time-picker.component.scss'],
+    standalone: false
 })
 export class DateTimePickerComponent implements OnInit {
 
